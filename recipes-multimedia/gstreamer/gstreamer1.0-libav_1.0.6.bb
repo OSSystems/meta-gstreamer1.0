@@ -16,10 +16,10 @@ DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base zlib bzip2"
 inherit autotools pkgconfig
 
 SRC_URI = " \
-	http://gstreamer.freedesktop.org/src/gst-libav/gst-libav-${PV}.tar.xz \
-	file://0001-Disable-yasm-for-libav-when-disable-yasm.patch \
-	file://libav_e500mc.patch \
-	"
+    http://gstreamer.freedesktop.org/src/gst-libav/gst-libav-${PV}.tar.xz \
+    file://0001-Disable-yasm-for-libav-when-disable-yasm.patch \
+    file://libav_e500mc.patch \
+    "
 
 SRC_URI[md5sum] = "07e5399c44346a95aafc1d4533125774"
 SRC_URI[sha256sum] = "8ab222a52bf7482e913f2c9a4f490cda8f8ed1acfbc429f27451b0558b08044d"

@@ -20,16 +20,16 @@ GSTREAMER_1_0_ORC ?= "--disable-orc"
 PACKAGES_DYNAMIC = "${PN}-*"
 
 python __anonymous () {
-	# check if expected prefix is present
-	prefix = "gstreamer1.0-"
-	bpn = d.getVar("BPN", True)
-	if not bpn.startswith(prefix):
-		bb.fatal('Invalid GStreamer 1.0 plugin package name "%s" : must start with "%s"' % (bpn, prefix))
+    # check if expected prefix is present
+    prefix = "gstreamer1.0-"
+    bpn = d.getVar("BPN", True)
+    if not bpn.startswith(prefix):
+        bb.fatal('Invalid GStreamer 1.0 plugin package name "%s" : must start with "%s"' % (bpn, prefix))
 
-	# replaced prefix with "gst-", which is what is used for the tarball filenames
-	tarball_basename = "gst-" + bpn[len(prefix):]
-	pv = d.getVar("PV", True)
+    # replaced prefix with "gst-", which is what is used for the tarball filenames
+    tarball_basename = "gst-" + bpn[len(prefix):]
+    pv = d.getVar("PV", True)
 
-	d.setVar("SRC_URI", "http://gstreamer.freedesktop.org/src/%s/%s-%s.tar.xz" % (tarball_basename, tarball_basename, pv))
+    d.setVar("SRC_URI", "http://gstreamer.freedesktop.org/src/%s/%s-%s.tar.xz" % (tarball_basename, tarball_basename, pv))
 }
 

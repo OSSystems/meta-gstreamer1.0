@@ -12,9 +12,9 @@ DEPENDS = "glib-2.0 libxml2 bison-native flex-native"
 PR = "r1"
 
 SRC_URI = " \
-	http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
-	file://0001-Fix-crash-with-gst-inspect.patch \
-	"
+    http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
+    file://0001-Fix-crash-with-gst-inspect.patch \
+    "
 S = "${WORKDIR}/gstreamer-${PV}"
 
 SRC_URI[md5sum] = "d0797e51a420fca0beb973b9dcda586f"
