@@ -35,10 +35,10 @@ PR = "r1"
 PACKAGECONFIG ??= " "
 PACKAGECONFIG[libav] = "--with-system-libav,,libav"
 PACKAGECONFIG[lgpl]  = "--enable-lgpl,,"
+PACKAGECONFIG[yasm]  = "--enable-yasm,--disable-yasm,yasm-native"
 
 
 GSTREAMER_1_0_DEBUG ?= "--disable-debug"
-GSTREAMER_1_0_LIBAV_YASM ?= "--disable-yasm"
 
 LIBAV_EXTRA_CONFIGURE = "--with-libav-extra-configure"
 LIBAV_EXTRA_CONFIGURE_COMMON_ARG = "--target-os=linux \
@@ -49,10 +49,6 @@ LIBAV_EXTRA_CONFIGURE_COMMON = \
 '${LIBAV_EXTRA_CONFIGURE}="${LIBAV_EXTRA_CONFIGURE_COMMON_ARG}"'
 
 EXTRA_OECONF = "${LIBAV_EXTRA_CONFIGURE_COMMON}"
-
-# yasm not found, use --disable-yasm for a crippled build for libav
-EXTRA_OECONF_append_x86-64 = " ${GSTREAMER_1_0_LIBAV_YASM} "
-EXTRA_OECONF_append_x86 = " ${GSTREAMER_1_0_LIBAV_YASM} "
 
 FILES_${PN} += "${libdir}/gstreamer-1.0/*.so"
 FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"

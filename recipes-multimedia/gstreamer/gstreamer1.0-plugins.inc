@@ -15,7 +15,7 @@ acpaths = "-I ${S}/common/m4 -I ${S}/m4"
 
 require gstreamer1.0-plugins-package.inc
 
-GSTREAMER_1_0_ORC ?= "--disable-orc"
+PACKAGECONFIG[orc] = "--enable-orc,--disable-orc,orc"
 
 PACKAGES_DYNAMIC = "${PN}-*"
 
