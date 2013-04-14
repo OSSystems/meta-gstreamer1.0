@@ -28,6 +28,15 @@ S = "${WORKDIR}/gst-libav-${PV}"
 
 PR = "r1"
 
+
+# CAUTION: Using the system libav is not recommended. Since the libav API is changing all the time,
+# compilation errors (and other, more subtle bugs) can happen. It is usually better to rely on the
+# libav copy included in the gst-libav package.
+PACKAGECONFIG ??= " "
+PACKAGECONFIG[libav] = "--with-system-libav,,libav"
+PACKAGECONFIG[lgpl]  = "--enable-lgpl,,"
+
+
 GSTREAMER_1_0_DEBUG ?= "--disable-debug"
 GSTREAMER_1_0_LIBAV_YASM ?= "--disable-yasm"
 
