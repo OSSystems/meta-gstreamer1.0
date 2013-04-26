@@ -17,8 +17,8 @@ SRC_URI = " \
     "
 S = "${WORKDIR}/gstreamer-${PV}"
 
-SRC_URI[md5sum] = "d0797e51a420fca0beb973b9dcda586f"
-SRC_URI[sha256sum] = "50d4050cd6a23684b6bbf40a9b7c132edfb39fe9db2d81980adaa6e72f4d5826"
+SRC_URI[md5sum] = "8f6066a37c71a0d0ff5fe5f7687fea12"
+SRC_URI[sha256sum] = "68cada7ee24ede23e15dc81ccde11898eed1a7a3c6a2d81a8c31596fccb1b5ce"
 
 inherit autotools pkgconfig gettext
 

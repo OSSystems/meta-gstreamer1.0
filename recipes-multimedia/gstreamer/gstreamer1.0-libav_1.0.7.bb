@@ -21,8 +21,8 @@ SRC_URI = " \
     file://libav_e500mc.patch \
     "
 
-SRC_URI[md5sum] = "07e5399c44346a95aafc1d4533125774"
-SRC_URI[sha256sum] = "8ab222a52bf7482e913f2c9a4f490cda8f8ed1acfbc429f27451b0558b08044d"
+SRC_URI[md5sum] = "68e1eb18a58907e21b81d26ce7db056a"
+SRC_URI[sha256sum] = "aefa679d14e7a6558673cfbf401b9c01f1903bb52e5dc08332e9001d25a7ba7a"
 
 S = "${WORKDIR}/gst-libav-${PV}"
 

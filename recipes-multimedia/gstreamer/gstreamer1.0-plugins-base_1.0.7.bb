@@ -9,8 +9,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=0636e73ff0215e8d672dc4c32c317bb3 \
 DEPENDS += "${@base_contains('DISTRO_FEATURES', 'x11', 'virtual/libx11 libxv', '', d)}"
 DEPENDS += "freetype liboil util-linux"
 
-SRC_URI[md5sum] = "7123a7f9955bbf1a5a7bb75192c15427"
-SRC_URI[sha256sum] = "85e5f99af690f720ccde5ea7e793269d35883a3ead80ca9985fa44e18bb1a4a5"
+SRC_URI[md5sum] = "b5b43cfbf82b413ce2e07a190d87e68f"
+SRC_URI[sha256sum] = "014805e50b696bc06c3862ea656df079fc0b5fef0c10f16e9f085f290545677a"
 
 PR = "r1"
 

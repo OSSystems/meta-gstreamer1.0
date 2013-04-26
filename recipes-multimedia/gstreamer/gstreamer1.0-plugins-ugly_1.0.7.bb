@@ -7,8 +7,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343 \
 
 DEPENDS += "gstreamer1.0-plugins-base libid3tag"
 
-SRC_URI[md5sum] = "9ffee39153f419ae2329fbf54ed708e0"
-SRC_URI[sha256sum] = "8655ceec7533b5d30080a5051025e26ff8d06bea8d03a6b2af56c2f839d60586"
+SRC_URI[md5sum] = "8754edf6c3be235f232fb75ad11708bb"
+SRC_URI[sha256sum] = "b78b8cfabe322497da432a0f297dbb21862a033f95e8d4cd8f207eccb5288f2b"
 
 PR = "r1"
 
