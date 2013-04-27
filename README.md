@@ -67,7 +67,7 @@ its recipes are not included in OE-core. So, to enable Orc in all packages, add 
     PACKAGECONFIG_append_pn-gstreamer1.0-plugins-bad = "orc"
     PACKAGECONFIG_append_pn-gstreamer1.0-plugins-ugly = "orc"
 
-This is a list of all configuration values for enabling additional plugins in the packages:
+This is a list of all configuration values for enabling additional plugins and features in the packages:
 
 * gstreamer1.0-plugins-base
     * `orc` : enables Orc support
@@ -92,13 +92,10 @@ This is a list of all configuration values for enabling additional plugins in th
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
     * `x264` : h.264/AVC encoder plugin using libx264
-
-The gstreamer1.0-libav package can also be built with additional features this way. These are the
-configuration values:
-
-* `libav` : builds the package using the system's libav instead of the included one (**not recommended** unless you really know what you are doing!)
-* `lgpl` : build the package in LGPL mode (disables GPL elements)
-* `yasm` : enable support for the yasm assembler (recommended for performance)
+* gstreamer1.0-libav
+    * `libav` : builds the package using the system's libav instead of the included one (*not recommended* unless you really know what you are doing!)
+    * `lgpl` : build the package in LGPL mode (disables GPL elements)
+    * `yasm` : enable support for the yasm assembler (recommended for performance)
 
 
 OpenMAX IL support
