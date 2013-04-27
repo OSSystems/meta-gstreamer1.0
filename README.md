@@ -35,6 +35,28 @@ for GStreamer 1.0 use different names. These are:
 * gstreamer1.0-omx
 
 
+Building git versions
+---------------------
+
+By default, release tarballs are unpacked and built. It is possible, however, to build from the GStreamer
+git repositories instead. It is generally better to use the releases, however for bleeding edge features
+the git versions might be necessary.
+
+To let Bitbake know that the git version of a package is preferred, add to local.conf:
+
+    PREFERRED_VERSION_<packagename> = "git"
+
+For example, to use git versions of all packages, add to local.conf:
+
+    PREFERRED_VERSION_gstreamer1.0 = "git"
+    PREFERRED_VERSION_gstreamer1.0-plugins-base = "git"
+    PREFERRED_VERSION_gstreamer1.0-plugins-good = "git"
+    PREFERRED_VERSION_gstreamer1.0-plugins-bad = "git"
+    PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "git"
+    PREFERRED_VERSION_gstreamer1.0-libav = "git"
+    PREFERRED_VERSION_gstreamer1.0-omx = "git"
+
+
 Enabling plugins with dependencies
 ----------------------------------
 
@@ -67,7 +89,9 @@ its recipes are not included in OE-core. So, to enable Orc in all packages, add 
     PACKAGECONFIG_append_pn-gstreamer1.0-plugins-bad = "orc"
     PACKAGECONFIG_append_pn-gstreamer1.0-plugins-ugly = "orc"
 
-This is a list of all configuration values for enabling additional plugins and features in the packages:
+Below is a list of all configuration values for enabling additional plugins and features in the packages.
+git versions of the packages might have additional configuration values. These values that exist (currently)
+only in the git version are marked with "(git)".
 
 * gstreamer1.0-plugins-base
     * `orc` : enables Orc support
@@ -87,6 +111,9 @@ This is a list of all configuration values for enabling additional plugins and f
     * `opus` : Opus audio decoder plugin
     * `flite` : Flite speech synthesizer plugins
     * `opencv` : OpenCV image processing plugins
+    * `bluez` (git) : Bluetooth plugins using BlueZ
+    * `sbc` (git) : SBC codec plugins using BlueZ
+    * `hls` (git) : HTTP live streaming plugin (uses GNU tls)
 * gstreamer1.0-plugins-ugly
     * `orc` : enables Orc support
     * `cdio` : Compact Disc audio plugins using libcdio
