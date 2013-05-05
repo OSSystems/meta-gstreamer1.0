@@ -13,6 +13,7 @@ acpaths = "-I ${S}/common/m4 -I ${S}/m4"
 PR = "r1"
 
 GSTREAMER_1_0_OMX_TARGET ?= "bellagio"
+GSTREAMER_1_0_OMX_CORE_NAME ?= "/usr/lib/libomxil-bellagio.so.0"
 
 EXTRA_OECONF += "--disable-valgrind --with-omx-target=${GSTREAMER_1_0_OMX_TARGET}"
 
@@ -28,6 +29,11 @@ python __anonymous () {
         # Dedicated Raspberry Pi OpenMAX IL support makes this package machine specific
         d.setVar("PACKAGE_ARCH", d.getVar("MACHINE_ARCH", True))
 }
+
+set_omx_core_name() {
+	sed -i -e "s;^core-name=.*;core-name=${GSTREAMER_1_0_OMX_CORE_NAME};" "${D}/etc/xdg/gstomx.conf"
+}
+do_install[postfuncs] += " set_omx_core_name "
 
 FILES_${PN} += "${libdir}/gstreamer-1.0/*.so"
 FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"
