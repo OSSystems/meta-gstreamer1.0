@@ -1,4 +1,3 @@
-
 require gstreamer1.0-plugins.inc
 
 LICENSE = "GPLv2+ & LGPLv2+ & LGPLv2.1+ "
@@ -16,7 +15,7 @@ inherit gettext
 
 
 PACKAGECONFIG ??= " \
-    curl eglgles \
+    curl eglgles wayland \
     "
 
 PACKAGECONFIG[assrender] = "--enable-assrender,--disable-assrender,libass"
@@ -29,6 +28,7 @@ PACKAGECONFIG[mpg123]    = "--enable-mpg123,--disable-mpg123,mpg123"
 PACKAGECONFIG[opus]      = "--enable-opus,--disable-opus,libopus"
 PACKAGECONFIG[flite]     = "--enable-flite,--disable-flite,flite-alsa"
 PACKAGECONFIG[opencv]    = "--enable-opencv,--disable-opencv,opencv"
+PACKAGECONFIG[wayland]   = "--enable-wayland,--disable-wayland,wayland"
 
 
 
@@ -60,7 +60,6 @@ EXTRA_OECONF += " \
     --disable-soundtouch \
     --disable-spandsp \
     --disable-vdpau \
-    --disable-wayland \
     --disable-acm \
     --disable-android_media \
     --disable-apexsink \
