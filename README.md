@@ -15,7 +15,7 @@ Dependencies
 ------------
 
 * URI: git://git.openembedded.org/openembedded-core
-* branch: master
+* branch: dylan
 * revision: HEAD
 
 
