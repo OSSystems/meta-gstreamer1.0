@@ -1,6 +1,8 @@
 LIBV = "1.0"
 
-python populate_packages_prepend () {
+PACKAGESPLITFUNCS_prepend = " split_gstreamer10_packages "
+
+python split_gstreamer10_packages () {
     gst_libdir = d.expand('${libdir}/gstreamer-${LIBV}')
     postinst = d.getVar('plugin_postinst', True)
     glibdir = d.getVar('libdir', True)
@@ -19,18 +21,20 @@ python populate_packages_prepend () {
     packages = d.getVar('PACKAGES', True).split()
     for pkg in packages[1:]:
         if not pkg in blacklist and not pkg in metapkg_rdepends and not pkg.endswith('-dev') and not pkg.endswith('-dbg') and not pkg.count('locale') and not pkg.count('-staticdev'):
-            metapkg_rdepends.append(pkg)
+            # detect empty packages by getting their file list and checking if that list is empty
+            # only add package to RDEPENDS if it is not empty
+            files = d.getVar('FILES_' + pkg, True)
+            bb.note("METAPKG_gst10 %s : %s" % (pkg, files))
+            if files and len(files) > 0:
+                metapkg_rdepends.append(pkg)
     d.setVar('RDEPENDS_' + metapkg, ' '.join(metapkg_rdepends))
     d.setVar('DESCRIPTION_' + metapkg, pn + ' meta package')
 }
 
 # metapkg has runtime dependency on PN
-# each plugin depends on PN, plugin-dev on PN-dev, plugin-staticdev on PN-staticdev,
-# and plugin-meta on plugin-glib and plugin-apps
+# each plugin depends on PN, plugin-dev on PN-dev, plugin-staticdev on PN-staticdev
 # so we need them even when empty (like in gst-plugins-good case)
 ALLOW_EMPTY_${PN} = "1"
-ALLOW_EMPTY_${PN}-apps = "1"
-ALLOW_EMPTY_${PN}-glib = "1"
 ALLOW_EMPTY_${PN}-dev = "1"
 ALLOW_EMPTY_${PN}-staticdev = "1"
 
