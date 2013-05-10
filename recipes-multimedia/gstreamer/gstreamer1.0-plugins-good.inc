@@ -51,11 +51,5 @@ EXTRA_OECONF += " \
     ${GSTREAMER_1_0_ORC} \
 "
 
-
-do_configure_prepend() {
-	# This m4 file contains nastiness which conflicts with libtool 2.2.2
-	rm ${S}/m4/lib-link.m4 || true
-}
-
 FILES_${PN}-gconfelements += "${sysconfdir}/gconf/schemas/gstreamer-1.0.schemas"
 
