@@ -5,6 +5,8 @@ Subject: [PATCH] omx: fixed type error in printf call
 
 %zu expects size_t
 
+Upstream-Status: Submitted [https://bugzilla.gnome.org/show_bug.cgi?id=699008]
+
 Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 ---
  omx/gstomx.c |    2 +-
