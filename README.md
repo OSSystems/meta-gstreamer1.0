@@ -10,6 +10,11 @@ gst-openmax was replaced with gst-omx, since gst-openmax is unmaintained and
 has not been ported to 1.0 (gst-omx is its successor). gst-ffmpeg was replaced
 by gst-libav.
 
+These recipes have been pushed upstream to OpenEmbedded Core, and will probably
+be part of the next OE version. This layer therefore will be used to provide
+support for older versions (dylan and danny). If possible and appropiate,
+patches from OE core will be backported to this layer.
+
 
 Dependencies
 ------------
