@@ -71,11 +71,12 @@ that are supported by OE-core (i.e. recipes for them exist in OE-core) are alway
 These are:
 * gstreamer1.0-plugins-base : ivorbis (Tremor), ogg, theora, vorbis
 * gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, jpeg, libpng, soup, speex, taglib
-* gstreamer1.0-plugins-bad : curl, eglgles
+* gstreamer1.0-plugins-bad : curl, uvch264, neon, hls, sbc, dash, bz2, smoothstreaming
 * gstreamer1.0-plugins-ugly : a52dec, lame, mad, mpeg2dec
 
-With the X11, ALSA, and PulseAudio plugins, the situation is a bit different. They are built depending on the
-contents of the DISTRO\_FEATURES value (in other words, depending on what the OE distribution supports).
+With the X11, ALSA, BlueZ, DirectFB, eglgles, and PulseAudio plugins, the situation is a bit different. They are
+built depending on the contents of the DISTRO\_FEATURES value (in other words, depending on what the OE distribution
+supports).
 
 The rest is disabled by default, and can be enabled by appending to the respective PACKAGECONFIG values.
 For example, to enable vpx and wavpack support in gstreamer1.0-plugins-good , add to local.conf:
@@ -86,28 +87,20 @@ Note that after enabling a plugin this way, it must be ensured that recipes for 
 are available. In the example above, recipes for vpx and wavpack must exist. This typically means that
 additional OE layers must be used (often meta-oe or meta-multimedia).
 
-This is also how Orc support is enabled. By default, the plugins are not built with Orc, since
-its recipes are not included in OE-core. So, to enable Orc in all packages, add to local.conf for example:
-
-    PACKAGECONFIG_append_pn-gstreamer1.0-plugins-base = "orc"
-    PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "orc"
-    PACKAGECONFIG_append_pn-gstreamer1.0-plugins-bad = "orc"
-    PACKAGECONFIG_append_pn-gstreamer1.0-plugins-ugly = "orc"
+This is also how Orc support is enabled internally. Since version 1.2.2, Orc 0.4.18 is included in this layer,
+and enabled by default. (Orc has been added to OE core, but not for dylan.)
 
 Below is a list of all configuration values for enabling additional plugins and features in the packages.
 git versions of the packages might have additional configuration values. These values that exist (currently)
 only in the git version are marked with "(git)".
 
 * gstreamer1.0-plugins-base
-    * `orc` : enables Orc support
     * `pango` : Pango plugins
 * gstreamer1.0-plugins-good
-    * `orc` : enables Orc support
     * `jack` : JACK audio system plugins
     * `vpx` : plugins for en- and decoding VP8 video streams, using Google's libvpx
     * `wavpack` : WavPack plugins
 * gstreamer1.0-plugins-bad
-    * `orc` : enables Orc support
     * `assrender` : ASS/SSA subtitle renderer plugins
     * `faad` : AAC decoding plugins using the FAAD library
     * `libmms` : Microsoft Multimedia Stream plugins
@@ -115,12 +108,11 @@ only in the git version are marked with "(git)".
     * `mpg123` : MPEG-1 layer 1/2/3 audio decoder plugin using the mpg123 library
     * `opus` : Opus audio decoder plugin
     * `flite` : Flite speech synthesizer plugins
+    * `openal` : OpenAL plugin
     * `opencv` : OpenCV image processing plugins
-    * `bluez` (git) : Bluetooth plugins using BlueZ
-    * `sbc` (git) : SBC codec plugins using BlueZ
-    * `hls` (git) : HTTP live streaming plugin (uses GNU tls)
+    * `fluidsynth` : FluidSynth plugins
+    * `rsvg` : librsvg plugins
 * gstreamer1.0-plugins-ugly
-    * `orc` : enables Orc support
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
     * `x264` : h.264/AVC encoder plugin using libx264
