@@ -1,4 +1,4 @@
-DESCRIPTION = "Libav-based GStreamer 1.x plugin"
+SUMMARY = "Libav-based GStreamer 1.x plugin"
 SECTION = "multimedia"
 LICENSE = "GPLv2+ & LGPLv2+ & ( (GPLv2+ & LGPLv2.1+) | (GPLv3+ & LGPLv3+) )"
 LICENSE_FLAGS = "commercial"
@@ -7,13 +7,10 @@ DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base zlib bzip2"
 
 inherit autotools pkgconfig
 
-PR = "r1"
-
-
 # CAUTION: Using the system libav is not recommended. Since the libav API is changing all the time,
 # compilation errors (and other, more subtle bugs) can happen. It is usually better to rely on the
 # libav copy included in the gst-libav package.
-PACKAGECONFIG ??= " "
+PACKAGECONFIG ??= " orc "
 PACKAGECONFIG[libav] = "--with-system-libav,,libav"
 PACKAGECONFIG[lgpl]  = "--enable-lgpl,,"
 PACKAGECONFIG[yasm]  = "--enable-yasm,--disable-yasm,yasm-native"

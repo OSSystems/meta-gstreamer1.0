@@ -7,11 +7,12 @@ DEPENDS += "freetype liboil util-linux"
 
 inherit gettext
 
+PACKAGES_DYNAMIC =+ "^libgst.*"
 
 PACKAGECONFIG ??= " \
     ${@base_contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
     ${@base_contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
-    ivorbis ogg theora vorbis \
+    orc ivorbis ogg theora vorbis \
     "
 
 X11DEPENDS = "virtual/libx11 libsm libxrender"
@@ -29,8 +30,6 @@ PACKAGECONFIG[pango]   = "--enable-pango,--disable-pango,pango"
 # cdparanoia and libvisual do not seem to exist anywhere in OE
 EXTRA_OECONF += " \
     --disable-freetypetest \
-    --disable-oggtest \
-    --disable-vorbistest \
     --disable-cdparanoia \
     --disable-libvisual \
     ${GSTREAMER_1_0_ORC} \
