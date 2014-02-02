@@ -18,7 +18,6 @@ PACKAGECONFIG[dvdread]  = "--enable-dvdread,--disable-dvdread,libdvdread"
 PACKAGECONFIG[lame]     = "--enable-lame,--disable-lame,lame"
 PACKAGECONFIG[mad]      = "--enable-mad,--disable-mad,libmad"
 PACKAGECONFIG[mpeg2dec] = "--enable-mpeg2dec,--disable-mpeg2dec,mpeg2dec"
-PACKAGECONFIG[x264]     = "--enable-x264,--disable-x264,x264"
 
 
 EXTRA_OECONF += " \
@@ -26,6 +25,7 @@ EXTRA_OECONF += " \
     --disable-amrwb \
     --disable-sidplay \
     --disable-twolame \
+    --disable-x264 \
     ${GSTREAMER_1_0_ORC} \
     "
 

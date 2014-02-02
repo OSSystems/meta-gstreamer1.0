@@ -20,24 +20,18 @@ PACKAGECONFIG ??= " \
 PACKAGECONFIG[assrender]       = "--enable-assrender,--disable-assrender,libass"
 PACKAGECONFIG[curl]            = "--enable-curl,--disable-curl,curl"
 PACKAGECONFIG[eglgles]         = "--enable-eglgles,--disable-eglgles,virtual/egl virtual/libgles2"
-PACKAGECONFIG[faac]            = "--enable-faac,--disable-faac,faac"
 PACKAGECONFIG[faad]            = "--enable-faad,--disable-faad,faad2"
 PACKAGECONFIG[libmms]          = "--enable-libmms,--disable-libmms,libmms"
 PACKAGECONFIG[modplug]         = "--enable-modplug,--disable-modplug,libmodplug"
-PACKAGECONFIG[mpg123]          = "--enable-mpg123,--disable-mpg123,mpg123"
 PACKAGECONFIG[opus]            = "--enable-opus,--disable-opus,libopus"
 PACKAGECONFIG[flite]           = "--enable-flite,--disable-flite,flite-alsa"
 PACKAGECONFIG[opencv]          = "--enable-opencv,--disable-opencv,opencv"
 PACKAGECONFIG[uvch264]         = "--enable-uvch264,--disable-uvch264,libusb1 udev"
 PACKAGECONFIG[directfb]        = "--enable-directfb,--disable-directfb,directfb"
 PACKAGECONFIG[neon]            = "--enable-neon,--disable-neon,neon"
-PACKAGECONFIG[openal]          = "--enable-openal,--disable-openal,openal-soft"
 PACKAGECONFIG[hls]             = "--enable-hls,--disable-hls,gnutls"
-PACKAGECONFIG[sbc]             = "--enable-sbc,--disable-sbc,sbc"
 PACKAGECONFIG[dash]            = "--enable-dash,--disable-dash,libxml2"
 PACKAGECONFIG[bz2]             = "--enable-bz2,--disable-bz2,bzip2"
-PACKAGECONFIG[fluidsynth]      = "--enable-fluidsynth,--disable-fluidsynth,fluidsynth"
-PACKAGECONFIG[schroedinger]    = "--enable-schro,--disable-schro,schroedinger"
 PACKAGECONFIG[smoothstreaming] = "--enable-smoothstreaming,--disable-smoothstreaming,libxml2"
 PACKAGECONFIG[bluez]           = "--enable-bluez,--disable-bluez,bluez4"
 PACKAGECONFIG[rsvg]            = "--enable-rsvg,--disable-rsvg,librsvg"
@@ -69,6 +63,8 @@ EXTRA_OECONF += " \
     --disable-directshow \
     --disable-directsound \
     --disable-dts \
+    --disable-faac \
+    --disable-fluidsynth \
     --disable-gme \
     --disable-gsettings \
     --disable-gsm \
@@ -78,11 +74,13 @@ EXTRA_OECONF += " \
     --disable-lv2 \
     --disable-mimic \
     --disable-mpeg2enc \
+    --disable-mpg123 \
     --disable-mplex \
     --disable-musepack \
     --disable-mythtv \
     --disable-nas \
     --disable-ofa \
+    --disable-openal \
     --disable-openjpeg \
     --disable-opensles \
     --disable-osx_video \
@@ -90,6 +88,8 @@ EXTRA_OECONF += " \
     --disable-quicktime \
     --disable-resindvd \
     --disable-rtmp \
+    --disable-sbc \
+    --disable-schro \
     --disable-sdl \
     --disable-sdltest \
     --disable-sndfile \
@@ -105,6 +105,7 @@ EXTRA_OECONF += " \
     --disable-voaacenc \
     --disable-voamrwbenc \
     --disable-wasapi \
+    --disable-wayland \
     --disable-webp \
     --disable-wildmidi \
     --disable-wininet \
