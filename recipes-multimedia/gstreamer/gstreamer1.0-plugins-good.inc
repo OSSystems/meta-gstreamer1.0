@@ -15,8 +15,8 @@ PACKAGECONFIG ??= " \
     "
 
 X11DEPENDS = "virtual/libx11 libsm libxrender libxfixes libxdamage"
-X11ENABLEOPTS = "--enable-x --enable-xshm"
-X11DISABLEOPTS = "--disable-x --disable-xshm"
+X11ENABLEOPTS = "--enable-x"
+X11DISABLEOPTS = "--disable-x"
 PACKAGECONFIG[x11]        = "${X11ENABLEOPTS},${X11DISABLEOPTS},${X11DEPENDS}"
 PACKAGECONFIG[pulseaudio] = "--enable-pulse,--disable-pulse,pulseaudio"
 PACKAGECONFIG[cairo]      = "--enable-cairo,--disable-cairo,cairo"
@@ -39,6 +39,8 @@ PACKAGECONFIG[wavpack]    = "--enable-wavpack,--disable-wavpack,wavpack"
 EXTRA_OECONF += " \
     --enable-oss \
     --enable-gst_v4l2 \
+    --enable-zlib \
+    --enable-bz2 \
     --without-libv4l2 \
     --disable-directsound \
     --disable-waveform \
@@ -47,6 +49,7 @@ EXTRA_OECONF += " \
     --disable-osx_audio \
     --disable-osx_video \
     --disable-aalib \
+    --disable-aalibtest \
     --disable-libcaca \
     --disable-libdv \
     --disable-shout2 \
