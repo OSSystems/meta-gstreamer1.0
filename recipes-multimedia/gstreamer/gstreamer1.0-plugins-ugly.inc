@@ -28,3 +28,4 @@ EXTRA_OECONF += " \
     --disable-twolame \
     "
 
+FILES_${PN}-x264 += "${datadir}/gstreamer-1.0/presets/GstX264Enc.prs"
