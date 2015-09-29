@@ -14,6 +14,7 @@ PACKAGECONFIG ??= " orc yasm "
 PACKAGECONFIG[libav] = "--with-system-libav,,libav"
 PACKAGECONFIG[lgpl]  = "--enable-lgpl,,"
 PACKAGECONFIG[yasm]  = "--enable-yasm,--disable-yasm,yasm-native"
+PACKAGECONFIG[orc]  = "--enable-orc,--disable-orc,orc"
 
 
 GSTREAMER_1_0_DEBUG ?= "--disable-debug"

@@ -1,5 +1,3 @@
-LIBV = "1.0"
-
 PACKAGESPLITFUNCS_prepend = " split_gstreamer10_packages "
 PACKAGESPLITFUNCS_append = " set_metapkg_rdepends "
 
