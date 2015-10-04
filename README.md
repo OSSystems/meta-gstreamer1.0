@@ -3,17 +3,11 @@ OpenEmbedded  layer for GStreamer 1.0
 
 This layer provides UNOFFICIAL support for the
 [GStreamer 1.0 framework](http://gstreamer.freedesktop.org/) for use with
-OpenEmbedded and/or Yocto.
-
-The recipes are adapted versions of the GStreamer 0.10 recipes from OE-core.
-gst-openmax was replaced with gst-omx, since gst-openmax is unmaintained and
-has not been ported to 1.0 (gst-omx is its successor). gst-ffmpeg was replaced
-by gst-libav.
-
-These recipes have been pushed upstream to OpenEmbedded Core, and will probably
-be part of the next OE version. This layer therefore will be used to provide
-support for older versions (dylan and danny). If possible and appropiate,
-patches from OE core will be backported to this layer.
+OpenEmbedded and/or Yocto. It is used for GStreamer recipe backports, to
+provide older OE versions with support for newer GStreamer versions, and
+also as a staging ground for recent recipe upgrades which haven't yet made
+it into OE-core (for example, because a new GStreamer version was released
+just recently).
 
 
 Dependencies
@@ -23,13 +17,16 @@ Dependencies
 * branch: master
 * revision: HEAD
 
+Additionally, the meta-multimedia and meta-oe layers of the meta-openembedded repo at
+git://git.openembedded.org/meta-openembedded are necessary for optional plugins
+(see below).
+
 
 Package names and coexistence with 0.10
 ---------------------------------------
 
-OpenEmbedded Core currently contains recipes for GStreamer 0.10.36 . Since 1.0
-was designed to be able to coexist with 0.10 in the same system, the recipes
-for GStreamer 1.0 use different names. These are:
+Since 1.0 was designed to be able to coexist with 0.10 in the same system, the names
+of the recipes for GStreamer 1.0 reflect that. The names are:
 
 * gstreamer1.0
 * gstreamer1.0-plugins-base
@@ -69,9 +66,9 @@ By default, in the base/good/bad/ugly recipes, only dependency-less plugins and 
 that are supported by OE-core (i.e. recipes for them exist in OE-core) are always enabled.
 
 These are:
-* gstreamer1.0-plugins-base : ivorbis (Tremor), ogg, theora, vorbis
-* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, jpeg, libpng, soup, speex, taglib
-* gstreamer1.0-plugins-bad : curl, uvch264, neon, sndfile, hls, sbc, dash, bz2, smoothstreaming
+* gstreamer1.0-plugins-base : ivorbis (Tremor), ogg, theora, vorbis, pango, gio-unix-2.0
+* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, libpng, soup, speex, taglib
+* gstreamer1.0-plugins-bad : curl, uvch264, neon, sndfile, hls, sbc, dash, bz2, smoothstreaming, rsvg, dtls
 * gstreamer1.0-plugins-ugly : a52dec, lame, mad, mpeg2dec
 
 With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, and PulseAudio plugins, the situation is a bit different.
@@ -87,17 +84,12 @@ Note that after enabling a plugin this way, it must be ensured that recipes for 
 are available. In the example above, recipes for vpx and wavpack must exist. This typically means that
 additional OE layers must be used (often meta-oe or meta-multimedia).
 
-This is also how Orc support is enabled internally. Since version 1.2.2, Orc 0.4.18 is included in this layer,
-and enabled by default. (Orc has been added to OE core, but not for dora; it is contained in meta-openembedded
-dora branch, but for convenience - using GStreamer without Orc is rarely a good idea - the recipe is also
-included in this layer.)
+This is also how Orc support is enabled internally. Since version 1.6.0, Orc 0.4.23 is included in this layer,
+and enabled by default. (Orc 0.4.23 is present in OE-Core, but to make GStreamrer 1.6 buildable with older
+layers, its recipe is included.)
 
 Below is a list of all configuration values for enabling additional plugins and features in the packages.
-git versions of the packages might have additional configuration values. These values that exist (currently)
-only in the git version are marked with "(git)".
 
-* gstreamer1.0-plugins-base
-    * `pango` : Pango plugins
 * gstreamer1.0-plugins-good
     * `jack` : JACK audio system plugins
     * `vpx` : plugins for en- and decoding VP8 video streams, using Google's libvpx
@@ -115,16 +107,18 @@ only in the git version are marked with "(git)".
     * `openal` : OpenAL audio plugins
     * `fluidsynth` : FluidSynth plugins
     * `schroedinger` : Dirac video codec plugins using the schroedinger library
-    * `rsvg` : librsvg plugins
     * `webp` : WebP plugins
+    * `rtmp` : Real Time Messaging Protocol (RTMP) plugins
+    * `libssh2` : Enable libssh2 support in cURL plugins
+    * `gtk` : GTK+3 plugins
+    * `qt5` : Qt5 QML plugins
 * gstreamer1.0-plugins-ugly
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
     * `x264` : h.264/AVC encoder plugin using libx264
 * gstreamer1.0-libav
     * `libav` : builds the package using the system's libav instead of the included one (*not recommended* unless you really know what you are doing!)
-    * `lgpl` : build the package in LGPL mode (disables GPL elements)
-    * `yasm` : enable support for the yasm assembler (recommended for performance)
+    * `gpl` : build the package in GPL mode (enables GPL elements)
 
 
 OpenMAX IL support
@@ -142,3 +136,10 @@ supported:
 If the value of `GSTREAMER_1_0_OMX_TARGET` is changed by a .bbappend file to
 a device specific value, the recipe automatically sets the `PACKAGE_ARCH` of
 gstreamer1.0-omx to `MACHINE_ARCH`.
+
+Furthermore, if a device specific .bbappend file is written, it is recommended
+to also set the value of `GSTREAMER_1_0_OMX_CORE_NAME` in it. This value
+specifies the filename of the OpenMAX core (a shared library) that needs to be
+used. With the Bellagio OpenMAX implementation, its value is:
+`${libdir}/libomxil-bellagio.so.0`. The gstreamer1.0-omx recipe needs this value
+for adjusting the `core-name` entries in the `gstomx.conf` configuration file.
