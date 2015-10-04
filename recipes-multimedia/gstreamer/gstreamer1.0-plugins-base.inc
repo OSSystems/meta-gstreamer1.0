@@ -3,7 +3,7 @@ require gstreamer1.0-plugins.inc
 LICENSE = "GPLv2+ & LGPLv2+"
 
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'virtual/libx11 libxv', '', d)}"
-DEPENDS += "freetype liboil util-linux iso-codes zlib"
+DEPENDS += "freetype liboil util-linux zlib"
 
 inherit gettext
 
