@@ -26,13 +26,13 @@ PACKAGECONFIG[theora]       = "--enable-theora,--disable-theora,libtheora"
 PACKAGECONFIG[vorbis]       = "--enable-vorbis,--disable-vorbis,libvorbis"
 PACKAGECONFIG[pango]        = "--enable-pango,--disable-pango,pango"
 PACKAGECONFIG[gio-unix-2.0] = "--enable-gio_unix_2_0,--disable-gio_unix_2_0,glib-2.0"
+PACKAGECONFIG[cdparanoia]   = "--enable-cdparanoia,--disable-cdparanoia,cdparanoia"
 
 
-# cdparanoia and libvisual do not seem to exist anywhere in OE
+# libvisual does not seem to exist anywhere in OE
 EXTRA_OECONF += " \
     --enable-zlib \
     --disable-freetypetest \
-    --disable-cdparanoia \
     --disable-libvisual \
 "
 
