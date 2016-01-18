@@ -59,7 +59,10 @@ PACKAGECONFIG[rtmp]            = "--enable-rtmp,--disable-rtmp,rtmpdump"
 PACKAGECONFIG[libssh2]         = "--enable-libssh2,--disable-libssh2,libssh2"
 PACKAGECONFIG[dtls]            = "--enable-dtls,--disable-dtls,openssl"
 PACKAGECONFIG[gtk]             = "--enable-gtk3,--disable-gtk3,gtk+3"
-PACKAGECONFIG[qt5]             = "--enable-qt,--disable-qt,qtbase qtdeclarative"
+PACKAGECONFIG[srtp]            = "--enable-srtp,--disable-srtp,libsrtp"
+PACKAGECONFIG[voaacenc]        = "--enable-voaacenc,--disable-voaacenc,vo-aacenc"
+PACKAGECONFIG[voamrwbenc]      = "--enable-voamrwbenc,--disable-voamrwbenc,vo-amrwbenc"
+PACKAGECONFIG[resindvd]        = "--enable-resindvd,--disable-resindvd,libdvdread libdvdnav"
 
 # these plugins have not been ported to 1.0 (yet):
 #   apexsink dc1394 lv2 linsys musepack nas timidity teletextdec sdl xvid wininet
@@ -69,8 +72,13 @@ PACKAGECONFIG[qt5]             = "--enable-qt,--disable-qt,qtbase qtdeclarative"
 # these plugins have no corresponding library in OE-core or meta-openembedded:
 #   openni2 winks direct3d directsound winscreencap
 #   apple_media android_media avc bs2b chromaprint daala dts gme gsm kate ladspa
-#   libde265 mimic mpeg2enc mplex ofa openh264 opensles pvr resindvd
-#   soundtouch spandsp spc srtp vdpau voaacenc voamrwbenc wasapi x265 zbar
+#   libde265 mimic mpeg2enc mplex ofa openh264 opensles pvr soundtouch spandsp
+#   spc vdpau wasapi x265 zbar
+
+# qt5 support is disabled, because it is not present in OE core, and requires more work than
+# just adding a packageconfig (it requires access to moc, uic, rcc, and qmake paths).
+# This is better done in a separate qt5 layer (which then should add a "qt5" packageconfig
+# in a gstreamer1.0-plugins-bad bbappend).
 
 EXTRA_OECONF += " \
     --enable-dvb \
@@ -112,19 +120,16 @@ EXTRA_OECONF += " \
     --disable-openni2 \
     --disable-opensles \
     --disable-pvr \
-    --disable-resindvd \
+    --disable-qt \
     --disable-sdl \
     --disable-sdltest \
     --disable-sndio \
     --disable-soundtouch \
     --disable-spandsp \
     --disable-spc \
-    --disable-srtp \
     --disable-teletextdec \
     --disable-timidity \
     --disable-vdpau \
-    --disable-voaacenc \
-    --disable-voamrwbenc \
     --disable-wasapi \
     --disable-wildmidi \
     --disable-wininet \
@@ -143,3 +148,5 @@ ARM_INSTRUCTION_SET = "arm"
 
 FILES_${PN}-opencv += "${datadir}/gst-plugins-bad/1.0/opencv*"
 FILES_${PN}-freeverb += "${datadir}/gstreamer-1.0/presets/GstFreeverb.prs"
+FILES_${PN}-voamrwbenc += "${datadir}/gstreamer-1.0/presets/GstVoAmrwbEnc.prs"
+FILES_${PN}-dev += "${libdir}/gstreamer-1.0/include/gst/gl/gstglconfig.h"
