@@ -13,8 +13,8 @@ SRC_URI = " \
     file://0001-Disable-yasm-for-libav-when-disable-yasm.patch \
     file://workaround-to-build-gst-libav-for-i586-with-gcc.patch \
 "
-SRC_URI[md5sum] = "eda67328be0878bb73449c29ca55baf8"
-SRC_URI[sha256sum] = "6cca6cf73182a882768ef0c860af88c2fd2c77e2c81ce464a998ab4e6baa604c"
+SRC_URI[md5sum] = "058b22411e1690eee5b71d1ab44eab25"
+SRC_URI[sha256sum] = "24d5e8e8b8c825af1a19aa80a27aba268ec383c8133fd4ef66e0e572ff6137a9"
 
 LIBAV_EXTRA_CONFIGURE_COMMON_ARG = "--target-os=linux \
   --cc='${CC}' --as='${CC}' --ld='${CC}' --nm='${NM}' --ar='${AR}' \

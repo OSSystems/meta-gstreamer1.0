@@ -12,7 +12,7 @@ inherit autotools pkgconfig
 # libav copy included in the gst-libav package.
 PACKAGECONFIG ??= " orc yasm "
 PACKAGECONFIG[libav] = "--with-system-libav,,libav"
-PACKAGECONFIG[gpl]  = "--enable-gpl,,"
+PACKAGECONFIG[gpl]  = "--enable-gpl,--disable-gpl,"
 PACKAGECONFIG[yasm]  = "--enable-yasm,--disable-yasm,yasm-native"
 PACKAGECONFIG[orc]  = "--enable-orc,--disable-orc,orc"
 
