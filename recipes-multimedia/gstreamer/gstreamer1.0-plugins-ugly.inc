@@ -8,7 +8,8 @@ DEPENDS += "gstreamer1.0-plugins-base libid3tag"
 inherit gettext
 
 PACKAGECONFIG ??= " \
-    a52dec lame mad mpeg2dec orc \
+    ${GSTREAMER_ORC} \
+    a52dec lame mad mpeg2dec \
 "
 
 PACKAGECONFIG[a52dec]   = "--enable-a52dec,--disable-a52dec,liba52"
@@ -19,6 +20,7 @@ PACKAGECONFIG[dvdread]  = "--enable-dvdread,--disable-dvdread,libdvdread"
 PACKAGECONFIG[lame]     = "--enable-lame,--disable-lame,lame"
 PACKAGECONFIG[mad]      = "--enable-mad,--disable-mad,libmad"
 PACKAGECONFIG[mpeg2dec] = "--enable-mpeg2dec,--disable-mpeg2dec,mpeg2dec"
+PACKAGECONFIG[mpg123]   = "--enable-mpg123,--disable-mpg123,mpg123"
 PACKAGECONFIG[x264]     = "--enable-x264,--disable-x264,x264"
 
 EXTRA_OECONF += " \

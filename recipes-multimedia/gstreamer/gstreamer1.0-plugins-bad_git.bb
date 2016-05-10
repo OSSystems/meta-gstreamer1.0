@@ -12,21 +12,20 @@ SRC_URI = " \
     git://anongit.freedesktop.org/gstreamer/common;destsuffix=git/common;name=common \
     file://configure-allow-to-disable-libssh2.patch \
     file://fix-maybe-uninitialized-warnings-when-compiling-with-Os.patch \
+    file://avoid-including-sys-poll.h-directly.patch \
+    file://ensure-valid-sentinels-for-gst_structure_get-etc.patch \
+    file://0001-gstreamer-gl.pc.in-don-t-append-GL_CFLAGS-to-CFLAGS.patch \
 "
 
-PV = "1.7.1+git${SRCPV}"
+PV = "1.7.2+git${SRCPV}"
 
-SRCREV_base = "3a088ecc9330d5cb8888ff43de0fe4f61c23a607"
-SRCREV_common = "86e46630ed8af8d94796859db550a9c3d89c9f65"
+UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>(\d+(\.\d+)+))"
+
+SRCREV_base = "50ae46cc0f8827bf966920d9c221e5cf86e811ba"
+SRCREV_common = "a25397448942079002622be231e9ec49b985745a"
 SRCREV_FORMAT = "base"
 
 S = "${WORKDIR}/git"
-
-# over-ride the default hls PACKAGECONFIG in gstreamer1.0-plugins-bad.inc to
-# pass an additional --with-hls-crypto=XXX option (new in 1.7.x) and switch HLS
-# AES decryption from nettle to openssl (ie a shared dependency with dtls).
-# This should move back to the common .inc once the main recipe updates to 1.8.x
-PACKAGECONFIG[hls] = "--enable-hls --with-hls-crypto=openssl,--disable-hls,openssl"
 
 do_configure_prepend() {
 	${S}/autogen.sh --noconfigure

@@ -7,9 +7,10 @@ DEPENDS += "gstreamer1.0-plugins-base libcap zlib bzip2"
 inherit gettext
 
 PACKAGECONFIG ??= " \
+    ${GSTREAMER_ORC} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
-    cairo flac gdk-pixbuf gudev jpeg libpng orc soup speex taglib v4l2 \
+    cairo flac gdk-pixbuf gudev jpeg libpng soup speex taglib v4l2 \
 "
 
 X11DEPENDS = "virtual/libx11 libsm libxrender libxfixes libxdamage"

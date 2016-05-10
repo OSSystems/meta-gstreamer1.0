@@ -1,6 +1,9 @@
 SUMMARY = "Gstreamer1.0 package groups"
 LICENSE = "MIT"
 
+# Due to use of COMBINED_FEATURES
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 inherit packagegroup
 
 COMMERCIAL_PLUGINS = "${COMMERCIAL_AUDIO_PLUGINS} ${COMMERCIAL_VIDEO_PLUGINS}"
@@ -26,7 +29,7 @@ RDEPENDS_gstreamer1.0-meta-base = "\
     gstreamer1.0 \
     gstreamer1.0-plugins-base-playback \
     gstreamer1.0-plugins-base-gio \
-    gstreamer1.0-plugins-base-alsa \
+    ${@bb.utils.contains('COMBINED_FEATURES', 'alsa', 'gstreamer1.0-plugins-base-alsa', '',d)} \
     gstreamer1.0-plugins-base-volume \
     gstreamer1.0-plugins-base-audioconvert \
     gstreamer1.0-plugins-base-audioresample \

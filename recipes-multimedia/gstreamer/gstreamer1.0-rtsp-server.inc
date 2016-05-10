@@ -12,3 +12,8 @@ SRC_URI = "http://gstreamer.freedesktop.org/src/${PNREAL}/${PNREAL}-${PV}.tar.xz
 S = "${WORKDIR}/${PNREAL}-${PV}"
 
 inherit autotools pkgconfig
+
+# Starting with 1.8.0 gst-rtsp-server includes dependency-less plugins as well
+LIBV = "1.0"
+require gst-plugins-package.inc
+

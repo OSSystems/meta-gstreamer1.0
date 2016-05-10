@@ -10,10 +10,10 @@ SRC_URI = " \
     file://0003-ssaparse-enhance-SSA-text-lines-parsing.patch \
     file://0004-subparse-set-need_segment-after-sink-pad-received-GS.patch \
     file://encodebin-Need-more-buffers-in-output-queue-for-bett.patch \
-    file://0005-convertframe-Support-video-crop-when-convert-frame.patch \
+    file://make-gio_unix_2_0-dependency-configurable.patch \
 "
 
-SRC_URI[md5sum] = "3ddde0ad598ef69f58d6a2e87f8b460f"
-SRC_URI[sha256sum] = "b6154f8fdba4877e95efd94610ef0ada4f0171cd12eb829a3c3c97345d9c7a75"
+SRC_URI[md5sum] = "5421edfeb7479d5f5776e917ba30e24e"
+SRC_URI[sha256sum] = "15a9de985cd265c344e359f5b19347df4021b7611ed2c2d91917cb900f2fad6f"
 
 S = "${WORKDIR}/gst-plugins-base-${PV}"

@@ -8,11 +8,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=73a5855a8119deb017f5f13cf327095d \
 SRC_URI = " \
     http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${PV}.tar.xz \
     file://configure-allow-to-disable-libssh2.patch \
+    file://fix-maybe-uninitialized-warnings-when-compiling-with-Os.patch \
+    file://avoid-including-sys-poll.h-directly.patch \
+    file://ensure-valid-sentinels-for-gst_structure_get-etc.patch \
+    file://0001-gstreamer-gl.pc.in-don-t-append-GL_CFLAGS-to-CFLAGS.patch \
     file://0001-glimagesink-Downrank-to-marginal.patch \
-    file://0002-glplugin-glwindow-fix-memory-leak-of-navigation-thre.patch \
 "
 
-SRC_URI[md5sum] = "4857adcafe41e4b9b8805cf88303bd55"
-SRC_URI[sha256sum] = "971b29101d6a9c5e3fe94d99d977a227f58f0b2d29b6ca2c7f292052542b3a61"
+SRC_URI[md5sum] = "e508da2a8a5c3d12264fe3415be2f451"
+SRC_URI[sha256sum] = "0bbd58f363734fc0c4a620b2d6fb01d427fdafdbda7b90b4e15d03b751ca40f5"
 
 S = "${WORKDIR}/gst-plugins-bad-${PV}"
