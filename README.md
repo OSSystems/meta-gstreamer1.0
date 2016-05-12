@@ -14,7 +14,7 @@ Dependencies
 ------------
 
 * URI: git://git.openembedded.org/openembedded-core
-* branch: master
+* branch: jethro
 * revision: HEAD
 
 Additionally, the meta-multimedia and meta-oe layers of the meta-openembedded repo at
@@ -35,6 +35,7 @@ of the recipes for GStreamer 1.0 reflect that. The names are:
 * gstreamer1.0-plugins-ugly
 * gstreamer1.0-libav
 * gstreamer1.0-omx
+* gstreamer1.0-rtsp-server
 
 
 Building git versions
@@ -66,10 +67,11 @@ By default, in the base/good/bad/ugly recipes, only dependency-less plugins and 
 that are supported by OE-core (i.e. recipes for them exist in OE-core) are always enabled.
 
 These are:
-* gstreamer1.0-plugins-base : ivorbis (Tremor), ogg, theora, vorbis, pango, gio-unix-2.0
-* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, libpng, soup, speex, taglib
-* gstreamer1.0-plugins-bad : curl, uvch264, neon, sndfile, hls, sbc, dash, bz2, smoothstreaming, rsvg, dtls
+* gstreamer1.0-plugins-base : gio-unix-2.0, ivorbis (Tremor), ogg, pango, theora, vorbis
+* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, libpng, soup, speex, taglib, v4l2
+* gstreamer1.0-plugins-bad : bz2, curl, dash, dtls, hls, neon, rsvg, sbc, smoothstreaming, sndfile, uvch264, webp
 * gstreamer1.0-plugins-ugly : a52dec, lame, mad, mpeg2dec
+* gstreamer1.0-libav : yasm
 
 With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, and PulseAudio plugins, the situation is a bit different.
 They are built depending on the contents of the DISTRO\_FEATURES value (in other words, depending on what the OE
@@ -90,31 +92,49 @@ layers, its recipe is included.)
 
 Below is a list of all configuration values for enabling additional plugins and features in the packages.
 
+* gstreamer1.0
+    * `check` : build unit test libraries
+    * `debug` : enable debug build
+    * `tests` : build test applications
+    * `valgrind` : enable run-time valgrind detection
+    * `gst-tracer-hooks` : enable tracing subsystem hooks
+    * `trace-historic` : enable historic tracing subsystem
+* gstreamer1.0-plugins-base
+    * `cdparanoia` : cdparanoia audio CD ripping plugin
+    * `opus` : Opus audio decoder plugin
+    * `visual` : libvisual based visualization plugins
 * gstreamer1.0-plugins-good
+    * `dv1394' : IEEE 1394 raw video source plugins
     * `jack` : JACK audio system plugins
+    * `libv4l2` : additional v4l2 plugins based on libv4l2
     * `vpx` : plugins for en- and decoding VP8 video streams, using Google's libvpx
     * `wavpack` : WavPack plugins
 * gstreamer1.0-plugins-bad
     * `assrender` : ASS/SSA subtitle renderer plugins
     * `faac` : AAC encoding plugins using the FAAC library
     * `faad` : AAC decoding plugins using the FAAD library
-    * `libmms` : Microsoft Multimedia Stream plugins
-    * `modplug` : Decoder plugins for module files (MOD/S3M/XM/IT/..) using the ModPlug library
-    * `mpg123` : MPEG-1 layer 1/2/3 audio decoder plugin using the mpg123 library
-    * `opus` : Opus audio decoder plugin
     * `flite` : Flite speech synthesizer plugins
-    * `opencv` : OpenCV image processing plugins
-    * `openal` : OpenAL audio plugins
     * `fluidsynth` : FluidSynth plugins
+    * `gtk` : GTK+3 plugins
+    * `libmms` : Microsoft Multimedia Stream plugins
+    * `libssh2` : Enable libssh2 support in cURL plugins
+    * `modplug` : Decoder plugins for module files (MOD/S3M/XM/IT/..) using the ModPlug library
+    * `openal` : OpenAL audio plugins
+    * `opencv` : OpenCV image processing plugins
+    * `opusparse` : Opus bitstream parser plugin
+    * `resindvd` : DVD navigation and playback plugin
     * `schroedinger` : Dirac video codec plugins using the schroedinger library
+    * `srtp` : RFC 3711 SRTP plugin
+    * `voaacenc` : OpenCORE based AAC encoder plugin
+    * `voamrwbenc` : OpenCORE based AMR wideband encoder plugin
     * `webp` : WebP plugins
     * `rtmp` : Real Time Messaging Protocol (RTMP) plugins
-    * `libssh2` : Enable libssh2 support in cURL plugins
-    * `gtk` : GTK+3 plugins
-    * `qt5` : Qt5 QML plugins
 * gstreamer1.0-plugins-ugly
+    * `amrnb`: OpenCORE based AMR narrowband decoder plugin
+    * `amrwb`: OpenCORE based AMR wideband decoder plugin
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
+    * `mpg123` : MPEG-1 layer 1/2/3 audio decoder plugin using the mpg123 library
     * `x264` : h.264/AVC encoder plugin using libx264
 * gstreamer1.0-libav
     * `libav` : builds the package using the system's libav instead of the included one (*not recommended* unless you really know what you are doing!)
