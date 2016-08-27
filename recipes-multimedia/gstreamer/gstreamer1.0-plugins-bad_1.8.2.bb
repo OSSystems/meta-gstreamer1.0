@@ -19,41 +19,9 @@ SRC_URI = " \
     file://0006-glcolorconvert-GLES3-deprecates-texture2D-and-it-doe.patch \
     file://0007-glplugin-gleffects-fix-little-rectangel-appears-at-t.patch \
     file://0008-gl-implement-GstGLMemoryEGL.patch \
+    file://0009-glimagesink-Downrank-to-marginal.patch \
 "
 SRC_URI[md5sum] = "83abc2e70684e7b195f18ca2992ef6e8"
 SRC_URI[sha256sum] = "d7995317530c8773ec088f94d9320909d41da61996b801ebacce9a56af493f97"
 
 S = "${WORKDIR}/gst-plugins-bad-${PV}"
-
-# over-ride the default hls PACKAGECONFIG in gstreamer1.0-plugins-bad.inc to
-# pass an additional --with-hls-crypto=XXX option (new in 1.7.x) and switch HLS
-# AES decryption from nettle to openssl (ie a shared dependency with dtls).
-# This should move back to the common .inc once the main recipe updates to 1.8.x
-PACKAGECONFIG[hls] = "--enable-hls --with-hls-crypto=openssl,--disable-hls,openssl"
-
-# The tinyalsa plugin was added prior to the 1.7.2 release
-# https://cgit.freedesktop.org/gstreamer/gst-plugins-bad/commit/?id=c8bd74fa9a81398f57d976c478d2043f30188684
-PACKAGECONFIG[tinyalsa] = "--enable-tinyalsa,--disable-tinyalsa,tinyalsa"
-
-# The vulkan based video sink plugin was added prior to the 1.7.2 release
-# https://cgit.freedesktop.org/gstreamer/gst-plugins-bad/commit/?id=5de6dd9f40629562acf90e35e1fa58464d66617d
-PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,libxcb"
-
-# The dependency-less netsim plugin was added prior to the 1.7.2 release
-# https://cgit.freedesktop.org/gstreamer/gst-plugins-bad/commit/?id=e3f9e854f08e82bfab11182c5a2aa6f9a0c73cd5
-EXTRA_OECONF += " \
-    --enable-netsim \
-"
-
-# In 1.6.2, the "--enable-hls" configure option generated an installable package
-# called "gstreamer1.0-plugins-bad-fragmented". In 1.7.1 that HLS plugin package
-# has become "gstreamer1.0-plugins-bad-hls". See:
-# http://cgit.freedesktop.org/gstreamer/gst-plugins-bad/commit/?id=efe62292a3d045126654d93239fdf4cc8e48ae08
-
-PACKAGESPLITFUNCS_append = " handle_hls_rename "
-
-python handle_hls_rename () {
-    d.setVar('RPROVIDES_gstreamer1.0-plugins-bad-hls', 'gstreamer1.0-plugins-bad-fragmented')
-    d.setVar('RREPLACES_gstreamer1.0-plugins-bad-hls', 'gstreamer1.0-plugins-bad-fragmented')
-    d.setVar('RCONFLICTS_gstreamer1.0-plugins-bad-hls', 'gstreamer1.0-plugins-bad-fragmented')
-}
