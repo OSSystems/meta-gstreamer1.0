@@ -8,7 +8,7 @@ LICENSE = "LGPLv2+"
 
 DEPENDS = "glib-2.0 glib-2.0-native libcap libxml2 bison-native flex-native"
 
-inherit autotools pkgconfig gettext upstream-version-is-even gtk-doc
+inherit autotools pkgconfig gettext gtk-doc
 
 PACKAGECONFIG ??= ""
 
