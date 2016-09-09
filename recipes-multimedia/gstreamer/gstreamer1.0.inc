@@ -8,15 +8,7 @@ LICENSE = "LGPLv2+"
 
 DEPENDS = "glib-2.0 glib-2.0-native libcap libxml2 bison-native flex-native"
 
-inherit autotools pkgconfig gettext upstream-version-is-even gobject-introspection gtk-doc
-
-# This way common/m4/introspection.m4 will come first
-# (it has a custom INTROSPECTION_INIT macro, and so must be used instead of our common introspection.m4 file)
-acpaths = "-I ${S}/common/m4 -I ${S}/m4"
-
-SRC_URI_append = " \
-    file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
-"
+inherit autotools pkgconfig gettext upstream-version-is-even gtk-doc
 
 PACKAGECONFIG ??= ""
 
@@ -46,12 +38,6 @@ FILES_${PN}-bash-completion += "${datadir}/bash-completion/completions/ ${datadi
 RRECOMMENDS_${PN}_qemux86 += "kernel-module-snd-ens1370 kernel-module-snd-rawmidi"
 RRECOMMENDS_${PN}_qemux86-64 += "kernel-module-snd-ens1370 kernel-module-snd-rawmidi"
 
-delete_pkg_m4_file() {
-        # This m4 file is out of date and is missing PKG_CONFIG_SYSROOT_PATH tweaks which we need for introspection
-        rm "${S}/common/m4/pkg.m4" || true
-        rm -f "${S}/common/m4/gtk-doc.m4"
-}
-
 # gstreamer is not using system-wide makefiles (which we patch in gtkdoc recipe,
 # but its own custom ones, which we have to patch here
 patch_gtk_doc_makefiles() {
@@ -64,8 +50,4 @@ patch_gtk_doc_makefiles() {
            ${S}/common/gtk-doc*mak
 }
 
-do_configure[prefuncs] += " delete_pkg_m4_file patch_gtk_doc_makefiles"
-
-do_compile_prepend() {
-        export GIR_EXTRA_LIBS_PATH="${B}/gst/.libs:${B}/libs/gst/base/.libs"
-}
+do_configure[prefuncs] += " patch_gtk_doc_makefiles"

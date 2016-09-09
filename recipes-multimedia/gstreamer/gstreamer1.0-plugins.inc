@@ -5,7 +5,7 @@ SECTION = "multimedia"
 
 DEPENDS = "gstreamer1.0 glib-2.0-native"
 
-inherit autotools pkgconfig upstream-version-is-even gobject-introspection gtk-doc
+inherit autotools pkgconfig upstream-version-is-even gtk-doc
 
 acpaths = "-I ${S}/common/m4 -I ${S}/m4"
 
@@ -28,14 +28,6 @@ EXTRA_OECONF = " \
     --disable-examples \
 "
 
-SRC_URI_append = " file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch"
-
-delete_pkg_m4_file() {
-	# This m4 file is out of date and is missing PKG_CONFIG_SYSROOT_PATH tweaks which we need for introspection
-	rm "${S}/common/m4/pkg.m4" || true
-	rm -f "${S}/common/m4/gtk-doc.m4"
-}
-
 # gstreamer is not using system-wide makefiles (which we patch in gtkdoc recipe,
 # but its own custom ones, which we have to patch here
 patch_gtk_doc_makefiles() {
@@ -48,6 +40,6 @@ patch_gtk_doc_makefiles() {
            ${S}/common/gtk-doc*mak
 }
 
-do_configure[prefuncs] += " delete_pkg_m4_file patch_gtk_doc_makefiles"
+do_configure[prefuncs] += " patch_gtk_doc_makefiles"
 
 PACKAGES_DYNAMIC = "^${PN}-.*"
