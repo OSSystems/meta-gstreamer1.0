@@ -17,6 +17,8 @@ inherit autotools pkgconfig gtk-doc
 LIBV = "1.0"
 require gst-plugins-package.inc
 
+FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"
+
 # gstreamer is not using system-wide makefiles (which we patch in gtkdoc recipe,
 # but its own custom ones, which we have to patch here
 patch_gtk_doc_makefiles() {
@@ -28,4 +30,3 @@ patch_gtk_doc_makefiles() {
 }
 
 do_configure[prefuncs] += " patch_gtk_doc_makefiles"
-

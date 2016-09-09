@@ -147,6 +147,7 @@ export OPENCV_PREFIX = "${STAGING_DIR_TARGET}${prefix}"
 ARM_INSTRUCTION_SET_armv4 = "arm"
 ARM_INSTRUCTION_SET_armv5 = "arm"
 
+FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"
 FILES_${PN}-dev += "${libdir}/gstreamer-${LIBV}/include/gst/gl/gstglconfig.h"
 FILES_${PN}-freeverb += "${datadir}/gstreamer-${LIBV}/presets/GstFreeverb.prs"
 FILES_${PN}-opencv += "${datadir}/gst-plugins-bad/${LIBV}/opencv*"

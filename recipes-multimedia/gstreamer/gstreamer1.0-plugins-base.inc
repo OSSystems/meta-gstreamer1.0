@@ -37,4 +37,5 @@ EXTRA_OECONF += " \
 
 CACHED_CONFIGUREVARS_append_x86 = " ac_cv_header_emmintrin_h=no ac_cv_header_xmmintrin_h=no"
 
+FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"
 FILES_${MLPREFIX}libgsttag-1.0 += "${datadir}/gst-plugins-base/1.0/license-translations.dict"

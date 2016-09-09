@@ -50,4 +50,5 @@ EXTRA_OECONF += " \
     --disable-waveform \
 "
 
+FILES_${PN}-dbg += "${libdir}/gstreamer-1.0/.debug"
 FILES_${PN}-equalizer += "${datadir}/gstreamer-1.0/presets/*.prs"
