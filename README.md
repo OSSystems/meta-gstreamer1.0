@@ -67,10 +67,10 @@ By default, in the base/good/bad/ugly recipes, only dependency-less plugins and 
 that are supported by OE-core (i.e. recipes for them exist in OE-core) are always enabled.
 
 These are:
-* gstreamer1.0-plugins-base : gio-unix-2.0, ivorbis (Tremor), ogg, pango, theora, vorbis
+* gstreamer1.0-plugins-base : gio-unix-2.0, ogg, pango, theora, vorbis
 * gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, libpng, soup, speex, taglib, v4l2
 * gstreamer1.0-plugins-bad : bz2, curl, dash, dtls, hls, neon, rsvg, sbc, smoothstreaming, sndfile, uvch264, webp
-* gstreamer1.0-plugins-ugly : a52dec, lame, mad, mpeg2dec
+* gstreamer1.0-plugins-ugly : a52dec, lame, mpg123, mpeg2dec
 * gstreamer1.0-libav : yasm
 
 With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, and PulseAudio plugins, the situation is a bit different.
@@ -86,8 +86,8 @@ Note that after enabling a plugin this way, it must be ensured that recipes for 
 are available. In the example above, recipes for vpx and wavpack must exist. This typically means that
 additional OE layers must be used (often meta-oe or meta-multimedia).
 
-This is also how Orc support is enabled internally. Since version 1.6.0, Orc 0.4.23 is included in this layer,
-and enabled by default. (Orc 0.4.23 is present in OE-Core, but to make GStreamrer 1.6 buildable with older
+This is also how Orc support is enabled internally. Since version 1.6.0, Orc is included in this layer,
+and enabled by default. (Orc is present in OE-Core, but to make GStreamrer 1.6 buildable with older
 layers, its recipe is included.)
 
 Below is a list of all configuration values for enabling additional plugins and features in the packages.
@@ -101,6 +101,7 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `trace-historic` : enable historic tracing subsystem
 * gstreamer1.0-plugins-base
     * `cdparanoia` : cdparanoia audio CD ripping plugin
+    * `ivorbis`: Integer-only Vorbis decoding using the Tremor library
     * `opus` : Opus audio decoder plugin
     * `visual` : libvisual based visualization plugins
 * gstreamer1.0-plugins-good
@@ -111,34 +112,38 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `wavpack` : WavPack plugins
 * gstreamer1.0-plugins-bad
     * `assrender` : ASS/SSA subtitle renderer plugins
+    * `dc1394` : libdc1394 based video source plugin for IIDC cameras
     * `faac` : AAC encoding plugins using the FAAC library
     * `faad` : AAC decoding plugins using the FAAD library
     * `flite` : Flite speech synthesizer plugins
     * `fluidsynth` : FluidSynth plugins
     * `gtk` : GTK+3 plugins
+    * `kms` : Video sink plugin using the Linux kernel mode setting API
     * `libmms` : Microsoft Multimedia Stream plugins
     * `libssh2` : Enable libssh2 support in cURL plugins
     * `modplug` : Decoder plugins for module files (MOD/S3M/XM/IT/..) using the ModPlug library
     * `openal` : OpenAL audio plugins
     * `opencv` : OpenCV image processing plugins
+    * `openjpeg` : OpenJPEG-based JPEG2000 image decoder/encoder plugin
     * `opusparse` : Opus bitstream parser plugin
     * `resindvd` : DVD navigation and playback plugin
+    * `rtmp` : Real Time Messaging Protocol (RTMP) plugins
     * `schroedinger` : Dirac video codec plugins using the schroedinger library
     * `srtp` : RFC 3711 SRTP plugin
     * `voaacenc` : OpenCORE based AAC encoder plugin
     * `voamrwbenc` : OpenCORE based AMR wideband encoder plugin
     * `webp` : WebP plugins
-    * `rtmp` : Real Time Messaging Protocol (RTMP) plugins
 * gstreamer1.0-plugins-ugly
-    * `amrnb`: OpenCORE based AMR narrowband decoder plugin
-    * `amrwb`: OpenCORE based AMR wideband decoder plugin
+    * `amrnb` : OpenCORE based AMR narrowband decoder plugin
+    * `amrwb` : OpenCORE based AMR wideband decoder plugin
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
-    * `mpg123` : MPEG-1 layer 1/2/3 audio decoder plugin using the mpg123 library
+    * `mad` : mp3 decoder plugin based on the mad library
     * `x264` : h.264/AVC encoder plugin using libx264
 * gstreamer1.0-libav
     * `libav` : builds the package using the system's libav instead of the included one (*not recommended* unless you really know what you are doing!)
     * `gpl` : build the package in GPL mode (enables GPL elements)
+    * `valgrind` : enable run-time valgrind detection
 
 
 OpenMAX IL support
