@@ -5,6 +5,10 @@ Subject: [PATCH] v4l2object: Also add videometa if there is padding to the
  right and bottom
 
 https://bugzilla.gnome.org/show_bug.cgi?id=780478
+
+Upstream-Status: Backport [1.10.5]
+
+Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 ---
  sys/v4l2/gstv4l2object.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
