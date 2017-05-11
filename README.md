@@ -36,6 +36,7 @@ of the recipes for GStreamer 1.0 reflect that. The names are:
 * gstreamer1.0-libav
 * gstreamer1.0-omx
 * gstreamer1.0-rtsp-server
+* gstreamer1.0-vaapi
 
 
 Building git versions
@@ -72,6 +73,7 @@ These are:
 * gstreamer1.0-plugins-bad : bz2, curl, dash, dtls, hls, neon, rsvg, sbc, smoothstreaming, sndfile, uvch264, webp
 * gstreamer1.0-plugins-ugly : a52dec, lame, mpg123, mpeg2dec
 * gstreamer1.0-libav : yasm
+* gstreamer1.0-vaapi : drm
 
 With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, and PulseAudio plugins, the situation is a bit different.
 They are built depending on the contents of the DISTRO\_FEATURES value (in other words, depending on what the OE
@@ -99,6 +101,8 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `valgrind` : enable run-time valgrind detection
     * `gst-tracer-hooks` : enable tracing subsystem hooks
     * `trace-historic` : enable historic tracing subsystem
+    * `unwind`: enables libunwind-based stack trace generation
+    * `dw`: adds source lines and numbers to backtraces using the elfutils libdw library
 * gstreamer1.0-plugins-base
     * `cdparanoia` : cdparanoia audio CD ripping plugin
     * `ivorbis`: Integer-only Vorbis decoding using the Tremor library
@@ -138,12 +142,16 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `amrwb` : OpenCORE based AMR wideband decoder plugin
     * `cdio` : Compact Disc audio plugins using libcdio
     * `dvdread` : DVD source plugins using libdvdread
-    * `mad` : mp3 decoder plugin based on the mad library
     * `x264` : h.264/AVC encoder plugin using libx264
 * gstreamer1.0-libav
     * `libav` : builds the package using the system's libav instead of the included one (*not recommended* unless you really know what you are doing!)
     * `gpl` : build the package in GPL mode (enables GPL elements)
     * `valgrind` : enable run-time valgrind detection
+* gstreamer1.0-vaapi
+    * `egl` : use the EGL backend
+    * `glx` : use the GLX backend
+    * `wayland` : enable Wayland output sinks
+    * `X11` : enable X11 output sinks
 
 
 OpenMAX IL support
