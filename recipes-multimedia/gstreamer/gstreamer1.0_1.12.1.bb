@@ -7,7 +7,7 @@ SRC_URI = " \
     http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
     file://0001-Make-the-detection-of-libunwind-and-libdw-determinis.patch \
 "
-SRC_URI[md5sum] = "8f76b6b5e4b3307e505bd6ab9304dd03"
-SRC_URI[sha256sum] = "14d5eef8297d2bf2a728d38fa43cd92cc267a0ad260cf83d770215212aff4302"
+SRC_URI[md5sum] = "3c9f2bc7d75daf87fb5d8d0f2158b8ea"
+SRC_URI[sha256sum] = "9044b9d8b3ff44457fa9e36faa59c56684b587b34dee449bfe15ec0c32a3a6d2"
 
 S = "${WORKDIR}/gstreamer-${PV}"

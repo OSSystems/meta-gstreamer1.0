@@ -16,10 +16,10 @@ Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
  pkgconfig/gstreamer-gl.pc.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gst-plugins-bad-1.12.0/pkgconfig/gstreamer-gl.pc.in
+Index: gst-plugins-bad-1.12.1/pkgconfig/gstreamer-gl.pc.in
 ===================================================================
---- gst-plugins-bad-1.12.0.orig/pkgconfig/gstreamer-gl.pc.in
-+++ gst-plugins-bad-1.12.0/pkgconfig/gstreamer-gl.pc.in
+--- gst-plugins-bad-1.12.1.orig/pkgconfig/gstreamer-gl.pc.in
++++ gst-plugins-bad-1.12.1/pkgconfig/gstreamer-gl.pc.in
 @@ -10,4 +10,4 @@ Version: @VERSION@
  Requires: gstreamer-base-@GST_API_VERSION@ gstreamer-@GST_API_VERSION@
  
