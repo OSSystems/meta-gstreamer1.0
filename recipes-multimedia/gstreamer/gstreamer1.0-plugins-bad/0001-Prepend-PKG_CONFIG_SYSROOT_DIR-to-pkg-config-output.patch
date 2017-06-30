@@ -22,10 +22,10 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gst-plugins-bad-1.12.0/configure.ac
+Index: gst-plugins-bad-1.12.1/configure.ac
 ===================================================================
---- gst-plugins-bad-1.12.0.orig/configure.ac
-+++ gst-plugins-bad-1.12.0/configure.ac
+--- gst-plugins-bad-1.12.1.orig/configure.ac
++++ gst-plugins-bad-1.12.1/configure.ac
 @@ -2233,7 +2233,7 @@ AG_GST_CHECK_FEATURE(WAYLAND, [wayland s
    PKG_CHECK_MODULES(WAYLAND, wayland-client >= 1.4.0 libdrm >= 2.4.55 wayland-protocols >= 1.4, [
      if test "x$wayland_scanner" != "x"; then

@@ -14,8 +14,8 @@ SRC_URI = " \
     file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
     file://0001-Prepend-PKG_CONFIG_SYSROOT_DIR-to-pkg-config-output.patch \
 "
-SRC_URI[md5sum] = "a1813105dc7394aff0be6dbedbf7c6d5"
-SRC_URI[sha256sum] = "11b73cfff1b315a8e9be1756435ea84937e7cb90afbab0e8e6975367dbfb8534"
+SRC_URI[md5sum] = "dbae48f984cb76e5fd482285952cf676"
+SRC_URI[sha256sum] = "7def8049d1c44e50199023159dfada60af58fd503ef58a020b79044bda705b97"
 
 S = "${WORKDIR}/gst-plugins-bad-${PV}"
 
