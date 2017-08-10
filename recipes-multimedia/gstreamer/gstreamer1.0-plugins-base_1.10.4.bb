@@ -9,10 +9,11 @@ SRC_URI = " \
     file://get-caps-from-src-pad-when-query-caps.patch \
     file://0003-ssaparse-enhance-SSA-text-lines-parsing.patch \
     file://0004-subparse-set-need_segment-after-sink-pad-received-GS.patch \
+    file://encodebin-Need-more-buffers-in-output-queue-for-bett.patch \
     file://make-gio_unix_2_0-dependency-configurable.patch \
     file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
 "
-SRC_URI[md5sum] = "f34fc5630f9db0db53172fcf3b955e01"
-SRC_URI[sha256sum] = "345fc6877f54b8b6e97aacf2996be37a51a0e369f53fc2cf83108af9f764364d"
+SRC_URI[md5sum] = "f6b46f8fac01eb773d556e3efc369e86"
+SRC_URI[sha256sum] = "f6d245b6b3d4cb733f81ebb021074c525ece83db0c10e932794b339b8d935eb7"
 
 S = "${WORKDIR}/gst-plugins-base-${PV}"
