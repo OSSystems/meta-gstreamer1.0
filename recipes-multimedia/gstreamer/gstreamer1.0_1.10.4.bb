@@ -5,9 +5,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d \
 
 SRC_URI = " \
     http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
-    file://0001-Make-the-detection-of-libunwind-and-libdw-determinis.patch \
+    file://deterministic-unwind.patch \
 "
-SRC_URI[md5sum] = "8f76b6b5e4b3307e505bd6ab9304dd03"
-SRC_URI[sha256sum] = "14d5eef8297d2bf2a728d38fa43cd92cc267a0ad260cf83d770215212aff4302"
+SRC_URI[md5sum] = "7c91a97e4a2dc81eafd59d0a2f8b0d6e"
+SRC_URI[sha256sum] = "50c2f5af50a6cc6c0a3f3ed43bdd8b5e2bff00bacfb766d4be139ec06d8b5218"
 
 S = "${WORKDIR}/gstreamer-${PV}"
