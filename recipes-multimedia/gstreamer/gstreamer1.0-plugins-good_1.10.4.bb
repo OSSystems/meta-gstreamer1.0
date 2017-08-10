@@ -10,8 +10,9 @@ SRC_URI = " \
     file://avoid-including-sys-poll.h-directly.patch \
     file://ensure-valid-sentinel-for-gst_structure_get.patch \
     file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
+    file://0001-v4l2object-Also-add-videometa-if-there-is-padding-to.patch \
 "
-SRC_URI[md5sum] = "9294b22ddab3bec373cbc5e84ff4c084"
-SRC_URI[sha256sum] = "8a1d734db7338e00c28b794a7f0a5a9e67d1c5c8b0074075b50638207d372ebc"
+SRC_URI[md5sum] = "cc0cc13cdb07d4237600b6886b81f31d"
+SRC_URI[sha256sum] = "8a86c61434a8c44665365bd0b3557a040937d1f44bf69caee4e9ea816ce74d7e"
 
 S = "${WORKDIR}/gst-plugins-good-${PV}"
