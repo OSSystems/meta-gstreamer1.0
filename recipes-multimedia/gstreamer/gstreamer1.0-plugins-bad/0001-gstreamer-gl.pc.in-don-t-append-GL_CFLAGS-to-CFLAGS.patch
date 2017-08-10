@@ -7,22 +7,18 @@ Dependencies' include directories should not be added in this way;
 it causes problems when cross-compiling in sysroot environments.
 
 Upstream-Status: Pending
-
-[Updated to apply to 1.12]
-
-Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
 ---
  pkgconfig/gstreamer-gl.pc.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gst-plugins-bad-1.12.0/pkgconfig/gstreamer-gl.pc.in
+Index: gst-plugins-bad-1.10.1/pkgconfig/gstreamer-gl.pc.in
 ===================================================================
---- gst-plugins-bad-1.12.0.orig/pkgconfig/gstreamer-gl.pc.in
-+++ gst-plugins-bad-1.12.0/pkgconfig/gstreamer-gl.pc.in
+--- gst-plugins-bad-1.10.1.orig/pkgconfig/gstreamer-gl.pc.in
++++ gst-plugins-bad-1.10.1/pkgconfig/gstreamer-gl.pc.in
 @@ -10,4 +10,4 @@ Version: @VERSION@
  Requires: gstreamer-base-@GST_API_VERSION@ gstreamer-@GST_API_VERSION@
  
- Libs: -L${libdir} -lgstgl-@GST_API_VERSION@
+ Libs: -L${libdir} -lgstgl-@GST_API_VERSION@ @GL_LIBS@
 -Cflags: -I${includedir} -I${libdir}/gstreamer-@GST_API_VERSION@/include @GL_CFLAGS@
 +Cflags: -I${includedir} -I${libdir}/gstreamer-@GST_API_VERSION@/include
