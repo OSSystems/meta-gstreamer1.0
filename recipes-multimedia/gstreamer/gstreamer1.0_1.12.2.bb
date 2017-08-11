@@ -5,9 +5,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d \
 
 SRC_URI = " \
     http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${PV}.tar.xz \
-    file://0001-Make-the-detection-of-libunwind-and-libdw-determinis.patch \
+    file://0001-configure-Add-switches-for-enabling-disabling-libdw-.patch \
 "
-SRC_URI[md5sum] = "8f76b6b5e4b3307e505bd6ab9304dd03"
-SRC_URI[sha256sum] = "14d5eef8297d2bf2a728d38fa43cd92cc267a0ad260cf83d770215212aff4302"
+SRC_URI[md5sum] = "4748860621607ffd96244fb79c86c238"
+SRC_URI[sha256sum] = "9fde3f39a2ea984f9e07ce09250285ce91f6e3619d186889f75b5154ecf994ba"
 
 S = "${WORKDIR}/gstreamer-${PV}"

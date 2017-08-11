@@ -22,9 +22,13 @@ REQUIRED_DISTRO_FEATURES ?= "opengl"
 
 PACKAGES =+ "${PN}-tests"
 
-# opengl packageconfig factored out to make it easy for distros
-# and BSP layers to pick either glx, egl, or no GL
-PACKAGECONFIG_GL ?= "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'egl', '', d)}"
+# OpenGL packageconfig factored out to make it easy for distros
+# and BSP layers to pick either glx, egl, or no GL. By default,
+# try detecting X11 first, and if found (with OpenGL), use GLX,
+# otherwise try to check if EGL can be used.
+PACKAGECONFIG_GL ?= "${@bb.utils.contains('DISTRO_FEATURES', 'x11 opengl', 'glx', \
+                        bb.utils.contains('DISTRO_FEATURES',     'opengl', 'egl', \
+                                                                       '', d), d)}"
 
 PACKAGECONFIG ??= "drm \
                    ${PACKAGECONFIG_GL} \

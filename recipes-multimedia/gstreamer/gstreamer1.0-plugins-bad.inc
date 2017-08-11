@@ -14,13 +14,14 @@ SRC_URI_append = " \
 # and BSP layers to pick either (desktop) opengl, gles2, or no GL
 PACKAGECONFIG_GL ?= "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'gles2 egl', '', d)}"
 
+# gtk is not in the PACKAGECONFIG variable by default until
+# the transition to gtk+3 is finished
 PACKAGECONFIG ??= " \
     ${GSTREAMER_ORC} \
     ${PACKAGECONFIG_GL} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)} \
-    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'gtk', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl gtk', '', d)} \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
     bz2 curl dash dtls hls neon rsvg sbc smoothstreaming sndfile uvch264 webp \
 "
 
@@ -65,6 +66,7 @@ PACKAGECONFIG[srtp]            = "--enable-srtp,--disable-srtp,libsrtp"
 PACKAGECONFIG[uvch264]         = "--enable-uvch264,--disable-uvch264,libusb1 libgudev"
 PACKAGECONFIG[voaacenc]        = "--enable-voaacenc,--disable-voaacenc,vo-aacenc"
 PACKAGECONFIG[voamrwbenc]      = "--enable-voamrwbenc,--disable-voamrwbenc,vo-amrwbenc"
+PACKAGECONFIG[vulkan]          = "--enable-vulkan,--disable-vulkan,vulkan"
 PACKAGECONFIG[wayland]         = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[webp]            = "--enable-webp,--disable-webp,libwebp"
 
@@ -72,7 +74,7 @@ PACKAGECONFIG[webp]            = "--enable-webp,--disable-webp,libwebp"
 #   openni2 winks direct3d directsound winscreencap acm apple_media iqa
 #   android_media avc bs2b chromaprint daala dts fdkaac gme gsm kate ladspa libde265
 #   lv2 mpeg2enc mplex msdk musepack nvenc ofa openh264 opensles soundtouch spandsp
-#   spc teletextdec tinyalsa vdpau vulkan wasapi x265 zbar webrtcdsp
+#   spc teletextdec tinyalsa vdpau wasapi x265 zbar webrtcdsp
 
 # qt5 support is disabled, because it is not present in OE core, and requires more work than
 # just adding a packageconfig (it requires access to moc, uic, rcc, and qmake paths).
@@ -122,7 +124,6 @@ EXTRA_OECONF += " \
     --disable-teletextdec \
     --disable-tinyalsa \
     --disable-vdpau \
-    --disable-vulkan \
     --disable-wasapi \
     --disable-webrtcdsp \
     --disable-wildmidi \
@@ -144,5 +145,5 @@ FILES_${PN}-opencv += "${datadir}/gst-plugins-bad/${LIBV}/opencv*"
 FILES_${PN}-voamrwbenc += "${datadir}/gstreamer-${LIBV}/presets/GstVoAmrwbEnc.prs"
 
 do_compile_prepend() {
-        export GIR_EXTRA_LIBS_PATH="${B}/gst-libs/gst/allocators/.libs"
+    export GIR_EXTRA_LIBS_PATH="${B}/gst-libs/gst/allocators/.libs"
 }

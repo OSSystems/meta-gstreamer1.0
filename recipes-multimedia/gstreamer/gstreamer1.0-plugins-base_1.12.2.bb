@@ -12,7 +12,7 @@ SRC_URI = " \
     file://make-gio_unix_2_0-dependency-configurable.patch \
     file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
 "
-SRC_URI[md5sum] = "f34fc5630f9db0db53172fcf3b955e01"
-SRC_URI[sha256sum] = "345fc6877f54b8b6e97aacf2996be37a51a0e369f53fc2cf83108af9f764364d"
+SRC_URI[md5sum] = "77f5379c4ca677616b415e3b3ff95578"
+SRC_URI[sha256sum] = "5067dce3afe197a9536fea0107c77213fab536dff4a213b07fc60378d5510675"
 
 S = "${WORKDIR}/gst-plugins-base-${PV}"
