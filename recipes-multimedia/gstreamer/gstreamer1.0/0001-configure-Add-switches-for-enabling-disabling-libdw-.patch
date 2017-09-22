@@ -7,6 +7,8 @@ Subject: [PATCH] configure: Add switches for enabling/disabling libdw and
 [Original patch modified to be applicable to 1.12.2]
 
 Upstream-Status: Submitted [https://bugzilla.gnome.org/show_bug.cgi?id=778193]
+
+Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 ---
  configure.ac | 38 ++++++++++++++++++++++++++++++++------
  1 file changed, 32 insertions(+), 6 deletions(-)
