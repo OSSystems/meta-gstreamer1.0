@@ -13,10 +13,10 @@ failed to merge target specific data of file
 -Khem
 Upstream-Status: Inappropriate [OE-Specific]
 
-Index: gst-libav-1.12.0/gst-libs/ext/libav/configure
+Index: gst-libav-1.12.1/gst-libs/ext/libav/configure
 ===================================================================
---- gst-libav-1.12.0.orig/gst-libs/ext/libav/configure
-+++ gst-libav-1.12.0/gst-libs/ext/libav/configure
+--- gst-libav-1.12.1.orig/gst-libs/ext/libav/configure
++++ gst-libav-1.12.1/gst-libs/ext/libav/configure
 @@ -5269,12 +5269,9 @@ elif enabled mips; then
  
      # Enable minimum ISA based on selected options
