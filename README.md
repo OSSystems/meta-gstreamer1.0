@@ -14,7 +14,7 @@ Dependencies
 ------------
 
 * URI: git://git.openembedded.org/openembedded-core
-* branch: pyro
+* branch: rocko
 * revision: HEAD
 
 Additionally, the meta-multimedia and meta-oe layers of the meta-openembedded repo at
