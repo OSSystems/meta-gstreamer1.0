@@ -67,12 +67,13 @@ PACKAGECONFIG[voamrwbenc]      = "--enable-voamrwbenc,--disable-voamrwbenc,vo-am
 PACKAGECONFIG[vulkan]          = "--enable-vulkan,--disable-vulkan,vulkan"
 PACKAGECONFIG[wayland]         = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols libdrm"
 PACKAGECONFIG[webp]            = "--enable-webp,--disable-webp,libwebp"
+PACKAGECONFIG[webrtcdsp]       = "--enable-webrtcdsp,--disable-webrtcdsp,webrtc-audio-processing"
 
 # these plugins have no corresponding library in OE-core or meta-openembedded:
 #   openni2 winks direct3d directsound winscreencap acm apple_media iqa
 #   android_media avc bs2b chromaprint daala dts fdkaac gme gsm kate ladspa libde265
 #   lv2 mpeg2enc mplex msdk musepack nvenc ofa openh264 opensles soundtouch spandsp
-#   spc teletextdec tinyalsa vdpau wasapi x265 zbar webrtcdsp
+#   spc teletextdec tinyalsa vdpau wasapi x265 zbar
 
 # qt5 support is disabled, because it is not present in OE core, and requires more work than
 # just adding a packageconfig (it requires access to moc, uic, rcc, and qmake paths).
@@ -123,7 +124,6 @@ EXTRA_OECONF += " \
     --disable-tinyalsa \
     --disable-vdpau \
     --disable-wasapi \
-    --disable-webrtcdsp \
     --disable-wildmidi \
     --disable-winks \
     --disable-winscreencap \
