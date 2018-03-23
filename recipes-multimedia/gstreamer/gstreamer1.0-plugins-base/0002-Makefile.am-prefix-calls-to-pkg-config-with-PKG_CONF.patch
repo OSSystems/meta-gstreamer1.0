@@ -6,11 +6,11 @@ Subject: [PATCH 2/4] Makefile.am: prefix calls to pkg-config with
 
 Upstream-Status: Pending [review on oe-core maillist]
 Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
+Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 ---
  gst-libs/gst/allocators/Makefile.am |  4 ++--
  gst-libs/gst/app/Makefile.am        |  4 ++--
  gst-libs/gst/audio/Makefile.am      | 12 ++++++------
- gst-libs/gst/fft/Makefile.am        |  4 ++--
  gst-libs/gst/pbutils/Makefile.am    | 12 ++++++------
  gst-libs/gst/riff/Makefile.am       |  8 ++++----
  gst-libs/gst/rtp/Makefile.am        |  8 ++++----
@@ -18,7 +18,7 @@ Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
  gst-libs/gst/sdp/Makefile.am        |  4 ++--
  gst-libs/gst/tag/Makefile.am        |  8 ++++----
  gst-libs/gst/video/Makefile.am      |  8 ++++----
- 11 files changed, 38 insertions(+), 38 deletions(-)
+ 10 files changed, 36 insertions(+), 36 deletions(-)
 
 Index: gst-plugins-base-1.12.3/gst-libs/gst/allocators/Makefile.am
 ===================================================================
@@ -89,28 +89,6 @@ Index: gst-plugins-base-1.12.3/gst-libs/gst/audio/Makefile.am
  		$(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
  
  CLEANFILES += $(BUILT_GIRSOURCES) $(typelibs_DATA)
-Index: gst-plugins-base-1.12.3/gst-libs/gst/fft/Makefile.am
-===================================================================
---- gst-plugins-base-1.12.3.orig/gst-libs/gst/fft/Makefile.am
-+++ gst-plugins-base-1.12.3/gst-libs/gst/fft/Makefile.am
-@@ -63,7 +63,7 @@ GstFft-@GST_API_VERSION@.gir: $(INTROSPE
- 		--c-include "gst/fft/fft.h" \
- 		-I$(top_srcdir)/gst-libs \
- 		-I$(top_builddir)/gst-libs \
--		--add-include-path=`PKG_CONFIG_PATH="$(GST_PKG_CONFIG_PATH)" $(PKG_CONFIG) --variable=girdir gstreamer-@GST_API_VERSION@` \
-+		--add-include-path=$(PKG_CONFIG_SYSROOT_DIR)`PKG_CONFIG_PATH="$(GST_PKG_CONFIG_PATH)" $(PKG_CONFIG) --variable=girdir gstreamer-@GST_API_VERSION@` \
- 		--library=libgstfft-@GST_API_VERSION@.la \
- 		--include=Gst-@GST_API_VERSION@ \
- 		--libtool="$(LIBTOOL)" \
-@@ -87,7 +87,7 @@ typelibs_DATA = $(BUILT_GIRSOURCES:.gir=
- 		$(INTROSPECTION_COMPILER) \
- 		--includedir=$(srcdir) \
- 		--includedir=$(builddir) \
--		--includedir=`PKG_CONFIG_PATH="$(GST_PKG_CONFIG_PATH)" $(PKG_CONFIG) --variable=girdir gstreamer-@GST_API_VERSION@` \
-+		--includedir=$(PKG_CONFIG_SYSROOT_DIR)`PKG_CONFIG_PATH="$(GST_PKG_CONFIG_PATH)" $(PKG_CONFIG) --variable=girdir gstreamer-@GST_API_VERSION@` \
- 		$(INTROSPECTION_COMPILER_OPTS) $< -o $(@F)
- 
- CLEANFILES = $(BUILT_GIRSOURCES) $(typelibs_DATA)
 Index: gst-plugins-base-1.12.3/gst-libs/gst/pbutils/Makefile.am
 ===================================================================
 --- gst-plugins-base-1.12.3.orig/gst-libs/gst/pbutils/Makefile.am
