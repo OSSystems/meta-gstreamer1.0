@@ -26,7 +26,7 @@ diff --git a/ext/taglib/gstid3v2mux.cc b/ext/taglib/gstid3v2mux.cc
 index 8651e77..a87234f 100644
 --- a/ext/taglib/gstid3v2mux.cc
 +++ b/ext/taglib/gstid3v2mux.cc
-@@ -465,7 +465,7 @@ add_image_tag (ID3v2::Tag * id3v2tag, const GstTagList * list,
+@@ -463,7 +463,7 @@ add_image_tag (ID3v2::Tag * id3v2tag, const GstTagList * list,
  
            if (info_struct) {
              if (gst_structure_get (info_struct, "image-type",

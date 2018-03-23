@@ -1,4 +1,7 @@
-Add -lvchostif to link when using -lEGL on rpi
+From d15c62b2fa74916b24e94c3bf16468e41dccad8d Mon Sep 17 00:00:00 2001
+From: Carlos Rafael Giani <dv@pseudoterminal.org>
+Date: Sun, 25 Feb 2018 12:44:31 +0100
+Subject: [PATCH] Add -lvchostif to link when using -lEGL on rpi
 
 This is required because libEGL from userland uses sybols
 from this library.
@@ -17,14 +20,21 @@ With this explicit link, plugins fail during runtime
 (gst-plugin-scanner:571): GStreamer-WARNING **: Failed to load plugin '/usr/lib/gstreamer-1.0/libgstomx.so': Error relocating /usr/lib/libgstgl-1.0.so.0: vc_dispmanx_element_add: symbol not found
 (gst-plugin-scanner:571): GStreamer-WARNING **: Failed to load plugin '/usr/lib/gstreamer-1.0/libgstopengl.so': Error relocating /usr/lib/libgstgl-1.0.so.0: vc_dispmanx_element_add: symbol not found
 
+[ Patch updated for GStreamer 1.14 to be applied against gst-gl.m4 ]
+
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
 
 Upstream-Status: Pending
-Index: gst-plugins-bad-1.10.4/configure.ac
-===================================================================
---- gst-plugins-bad-1.10.4.orig/configure.ac
-+++ gst-plugins-bad-1.10.4/configure.ac
-@@ -785,7 +785,7 @@ case $host in
+---
+ m4/gst-gl.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/gst-gl.m4 b/m4/gst-gl.m4
+index ffca666e2..2e728fb7a 100644
+--- a/m4/gst-gl.m4
++++ b/m4/gst-gl.m4
+@@ -226,7 +226,7 @@ case $host in
                              HAVE_EGL=yes
                              HAVE_GLES2=yes
                              HAVE_EGL_RPI=yes
@@ -33,3 +43,6 @@ Index: gst-plugins-bad-1.10.4/configure.ac
                              EGL_CFLAGS=""
                              AC_DEFINE(USE_EGL_RPI, [1], [Use RPi platform])
                            ])
+-- 
+2.14.1
+

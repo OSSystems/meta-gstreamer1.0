@@ -14,7 +14,7 @@ diff --git a/gst-libs/gst/riff/Makefile.am b/gst-libs/gst/riff/Makefile.am
 index 0a115cc..5057a58 100644
 --- a/gst-libs/gst/riff/Makefile.am
 +++ b/gst-libs/gst/riff/Makefile.am
-@@ -39,6 +39,8 @@ libgstriff_@GST_API_VERSION@_la_LDFLAGS = $(GST_LIB_LDFLAGS) $(GST_ALL_LDFLAGS)
+@@ -40,6 +40,8 @@ libgstriff_@GST_API_VERSION@_la_LDFLAGS = $(GST_LIB_LDFLAGS) $(GST_ALL_LDFLAGS)
  #		--strip-prefix=Gst \
  #		--warn-all \
  #		--c-include "gst/riff/riff.h" \

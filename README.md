@@ -69,15 +69,15 @@ that are supported by OE-core (i.e. recipes for them exist in OE-core) are alway
 
 These are:
 * gstreamer1.0-plugins-base : gio-unix-2.0, ogg, pango, theora, vorbis
-* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, libpng, soup, speex, taglib, v4l2
+* gstreamer1.0-plugins-good : cairo, flac, gdk-pixbuf, gudev, jpeg, lame, libpng, mpg123, soup, speex, taglib, v4l2
 * gstreamer1.0-plugins-bad : bz2, curl, dash, dtls, hls, neon, rsvg, sbc, smoothstreaming, sndfile, uvch264, webp
-* gstreamer1.0-plugins-ugly : a52dec, lame, mpg123, mpeg2dec
+* gstreamer1.0-plugins-ugly : a52dec, mpeg2dec
 * gstreamer1.0-libav : yasm
 * gstreamer1.0-vaapi : drm
 
-With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, and PulseAudio plugins, the situation is a bit different.
-They are built depending on the contents of the DISTRO\_FEATURES value (in other words, depending on what the OE
-distribution supports).
+With the X11, Wayland, ALSA, BlueZ, DirectFB, OpenGL, Vulkan, and PulseAudio plugins, the situation is a bit
+different. They are built depending on the contents of the DISTRO\_FEATURES value (in other words, depending
+on what the OE distribution supports).
 
 The rest is disabled by default, and can be enabled by appending to the respective PACKAGECONFIG values.
 For example, to enable vpx and wavpack support in gstreamer1.0-plugins-good , add to local.conf:
@@ -107,9 +107,9 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `cdparanoia` : cdparanoia audio CD ripping plugin
     * `ivorbis`: Integer-only Vorbis decoding using the Tremor library
     * `opus` : Opus audio decoder plugin
-    * `visual` : libvisual based visualization plugins
 * gstreamer1.0-plugins-good
     * `dv1394' : IEEE 1394 raw video source plugins
+    * `gtk` : GTK+3 plugins
     * `jack` : JACK audio system plugins
     * `libv4l2` : additional v4l2 plugins based on libv4l2
     * `vpx` : plugins for en- and decoding VP8 video streams, using Google's libvpx
@@ -121,10 +121,10 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `faad` : AAC decoding plugins using the FAAD library
     * `flite` : Flite speech synthesizer plugins
     * `fluidsynth` : FluidSynth plugins
-    * `gtk` : GTK+3 plugins
     * `kms` : Video sink plugin using the Linux kernel mode setting API
     * `libmms` : Microsoft Multimedia Stream plugins
     * `libssh2` : Enable libssh2 support in cURL plugins
+    * `lcms2` : Little CMS open source color management engine plugins
     * `modplug` : Decoder plugins for module files (MOD/S3M/XM/IT/..) using the ModPlug library
     * `openal` : OpenAL audio plugins
     * `opencv` : OpenCV image processing plugins
@@ -132,8 +132,8 @@ Below is a list of all configuration values for enabling additional plugins and 
     * `opusparse` : Opus bitstream parser plugin
     * `resindvd` : DVD navigation and playback plugin
     * `rtmp` : Real Time Messaging Protocol (RTMP) plugins
-    * `schroedinger` : Dirac video codec plugins using the schroedinger library
     * `srtp` : RFC 3711 SRTP plugin
+    * `ttml` : Timed Text Markup Language plugins
     * `voaacenc` : OpenCORE based AAC encoder plugin
     * `voamrwbenc` : OpenCORE based AMR wideband encoder plugin
     * `webp` : WebP plugins
