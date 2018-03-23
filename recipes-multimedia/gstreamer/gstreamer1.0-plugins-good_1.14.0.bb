@@ -10,9 +10,10 @@ SRC_URI = " \
     file://avoid-including-sys-poll.h-directly.patch \
     file://ensure-valid-sentinel-for-gst_structure_get.patch \
     file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
+    file://0002-qt-Get-EGL-native-display-from-QPA-if-platform-heade.patch \
 "
-SRC_URI[md5sum] = "bdf4791a2b788ec6a149b81ff4032038"
-SRC_URI[sha256sum] = "649f49bec60892d47ee6731b92266974c723554da1c6649f21296097715eb957"
+SRC_URI[md5sum] = "48584b02e469a314b0e71f1553a2d2a7"
+SRC_URI[sha256sum] = "6afa35747d528d3ab4ed8f5eac13f7235d7d28100d6a24dd78f81ec7c0d04688"
 
 S = "${WORKDIR}/gst-plugins-good-${PV}"
 
