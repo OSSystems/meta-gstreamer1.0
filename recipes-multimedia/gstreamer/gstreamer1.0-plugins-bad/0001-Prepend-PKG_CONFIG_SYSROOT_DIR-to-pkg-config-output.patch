@@ -24,7 +24,7 @@ diff --git a/configure.ac b/configure.ac
 index e307be6..83cdeb0 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2272,7 +2272,7 @@ AG_GST_CHECK_FEATURE(WAYLAND, [wayland sink], wayland , [
+@@ -1322,7 +1322,7 @@ AG_GST_CHECK_FEATURE(WAYLAND, [wayland sink], wayland , [
    PKG_CHECK_MODULES(WAYLAND, wayland-client >= 1.4.0 libdrm >= 2.4.55 wayland-protocols >= 1.4, [
      if test "x$wayland_scanner" != "x"; then
        HAVE_WAYLAND="yes"
