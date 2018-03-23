@@ -13,7 +13,7 @@ diff --git a/gst/rtsp-server/Makefile.am b/gst/rtsp-server/Makefile.am
 index 4fcd366..c67f5ab 100644
 --- a/gst/rtsp-server/Makefile.am
 +++ b/gst/rtsp-server/Makefile.am
-@@ -87,7 +87,7 @@ GstRtspServer-@GST_API_VERSION@.gir: $(INTROSPECTION_SCANNER) libgstrtspserver-@
+@@ -97,7 +97,7 @@ GstRtspServer-@GST_API_VERSION@.gir: $(INTROSPECTION_SCANNER) libgstrtspserver-@
  		--include=Gst-@GST_API_VERSION@ \
  		--include=GstRtsp-@GST_API_VERSION@ \
  		--include=GstNet-@GST_API_VERSION@ \
