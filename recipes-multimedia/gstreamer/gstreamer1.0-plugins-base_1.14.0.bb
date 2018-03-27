@@ -14,6 +14,7 @@ SRC_URI = " \
     file://0006-glimagesink-Downrank-to-marginal.patch \
     file://0007-Add-lvchostif-to-link-when-using-lEGL-on-rpi.patch \
     file://0008-viv-fb-Include-gstglfuncs.h-to-fix-cross-compilation.patch \
+    file://0009-gl-pick-up-GstVideo-1.0.gir-from-local-build-dir.patch \
 "
 SRC_URI[md5sum] = "370271327dd23110421a9c2927ac989a"
 SRC_URI[sha256sum] = "7e904660ff56e02b036cf7fdfb77a50a540828ca9d2614d69ba931772e5b6940"
