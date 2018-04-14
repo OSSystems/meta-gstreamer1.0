@@ -8,10 +8,19 @@ inherit gettext
 
 # gtk is not in the PACKAGECONFIG variable by default until
 # the transition to gtk+3 is finished
+
+# lame and mpg123 are not in the PACKAGECONFIG variable by default
+# because their associated recipes have the commercial flag set,
+# so having them in the PACKAGECONFIG variable would make it
+# impossible to build gstreamer1.0-plugins-good without adding
+# a commercial flag to it
+# TODO: revisit once openembedded-core dropped the commercial flags
+# in these two recipes; MP3 patents expired, so this could be done
+
 PACKAGECONFIG ??= " \
     ${GSTREAMER_ORC} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'pulseaudio x11', d)} \
-    cairo flac gdk-pixbuf gudev jpeg lame libpng mpg123 soup \
+    cairo flac gdk-pixbuf gudev jpeg libpng soup \
     speex taglib v4l2 \
 "
 
