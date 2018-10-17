@@ -10,8 +10,8 @@ SRC_URI = " \
             http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-${PV}.tar.xz \
             file://0001-introspection.m4-prefix-pkgconfig-paths-with-PKG_CON.patch \
             "
-SRC_URI[md5sum] = "ea0a800c6421c3c3cdbed3d040b8ffd3"
-SRC_URI[sha256sum] = "55e097d9d93921fdcf7abb0ff92d23b21dd9098e632f1ba433603b3bd1cf3d69"
+SRC_URI[md5sum] = "90768a0074db071175ce980064d9a1ac"
+SRC_URI[sha256sum] = "ac02d837f166c35ff6ce0738e281680d0b90052cfb1f0255dcf6aaca5f0f6d23"
 
 S = "${WORKDIR}/gst-plugins-ugly-${PV}"
 
