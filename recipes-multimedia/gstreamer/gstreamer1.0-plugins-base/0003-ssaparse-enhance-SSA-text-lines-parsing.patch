@@ -1,4 +1,4 @@
-From 918c96b24d10f61b7455b4cef3bab490849d0d77 Mon Sep 17 00:00:00 2001
+From 96a50b16f80a37ef0943b1cd7b991efe42a72503 Mon Sep 17 00:00:00 2001
 From: Mingke Wang <mingke.wang@freescale.com>
 Date: Thu, 19 Mar 2015 14:17:10 +0800
 Subject: [PATCH] ssaparse: enhance SSA text lines parsing.
@@ -11,7 +11,7 @@ Upstream-Status: Submitted [https://bugzilla.gnome.org/show_bug.cgi?id=747496]
 Signed-off-by: Mingke Wang <mingke.wang@freescale.com>
 
 ---
- gst/subparse/gstssaparse.c | 150 ++++++++++++++++++++++++++++++++++++++++-----
+ gst/subparse/gstssaparse.c | 150 +++++++++++++++++++++++++++++++++----
  1 file changed, 134 insertions(+), 16 deletions(-)
  mode change 100644 => 100755 gst/subparse/gstssaparse.c
 

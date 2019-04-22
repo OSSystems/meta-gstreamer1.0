@@ -1,4 +1,4 @@
-From 7ffa6e3d00e1d8a060f3f4c2bb9a72691af05d79 Mon Sep 17 00:00:00 2001
+From b18191096d40fe90c4a68989ee23731687e0c4a1 Mon Sep 17 00:00:00 2001
 From: Andre McCurdy <armccurdy@gmail.com>
 Date: Wed, 20 Jan 2016 13:00:00 -0800
 Subject: [PATCH] make gio_unix_2_0 dependency configurable
@@ -23,10 +23,10 @@ Signed-off-by: Andre McCurdy <armccurdy@gmail.com>
  1 file changed, 7 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index 12807bc..35a0bf3 100644
+index 717581f..bf96c81 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -806,9 +806,16 @@ AM_CONDITIONAL(HAVE_PNG, test "x$HAVE_PNG" = "xyes")
+@@ -811,9 +811,16 @@ AM_CONDITIONAL(HAVE_PNG, test "x$HAVE_PNG" = "xyes")
  AM_CONDITIONAL(HAVE_JPEG, test "x$HAVE_JPEG" = "xyes")
  
  dnl *** gio-unix-2.0 for tests/check/pipelines/tcp.c ***

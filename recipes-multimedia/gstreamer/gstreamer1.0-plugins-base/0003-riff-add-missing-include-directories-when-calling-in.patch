@@ -1,7 +1,8 @@
-From b9765efb1696e3e2e79f2955f759be199fe34882 Mon Sep 17 00:00:00 2001
+From 1387cfb93d4b6bc0806a8ae2d0c04974a898e79d Mon Sep 17 00:00:00 2001
 From: Alexander Kanavin <alex.kanavin@gmail.com>
 Date: Mon, 26 Oct 2015 17:29:37 +0200
 Subject: [PATCH] riff: add missing include directories when calling
+
  introspection scanner
 
 Upstream-Status: Pending [review on oe-core maillist]
@@ -12,7 +13,7 @@ Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/gst-libs/gst/riff/Makefile.am b/gst-libs/gst/riff/Makefile.am
-index c8c588a..c096453 100644
+index ecec07d..02620cb 100644
 --- a/gst-libs/gst/riff/Makefile.am
 +++ b/gst-libs/gst/riff/Makefile.am
 @@ -41,6 +41,8 @@ libgstriff_@GST_API_VERSION@_la_LDFLAGS = $(GST_LIB_LDFLAGS) $(GST_ALL_LDFLAGS)

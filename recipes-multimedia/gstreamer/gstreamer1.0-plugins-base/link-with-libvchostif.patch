@@ -1,4 +1,4 @@
-From 9866f51e5e0913f1e453eb574618bf7432f38cb6 Mon Sep 17 00:00:00 2001
+From 6ccc472ccf13bf1b0379ae54a0fa164ee5685bcb Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Wed, 11 Apr 2018 10:46:33 +0800
 Subject: [PATCH] Add -lvchostif to link when using -lEGL on rpi
@@ -23,15 +23,16 @@ With this explicit link, plugins fail during runtime
 Upstream-Status: Pending
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
 Signed-off-by: Anuj Mittal <anuj.mittal@intel.com>
+
 ---
  m4/gst-gl.m4 | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/m4/gst-gl.m4 b/m4/gst-gl.m4
-index 1e97240..ab7774c 100644
+index a397757..b9419aa 100644
 --- a/m4/gst-gl.m4
 +++ b/m4/gst-gl.m4
-@@ -231,7 +231,7 @@ case $host in
+@@ -275,7 +275,7 @@ case $host in
                              HAVE_EGL=yes
                              HAVE_GLES2=yes
                              HAVE_EGL_RPI=yes
@@ -40,6 +41,3 @@ index 1e97240..ab7774c 100644
                              EGL_CFLAGS=""
                              AC_DEFINE(USE_EGL_RPI, [1], [Use RPi platform])
                            ])
--- 
-2.7.4
-
