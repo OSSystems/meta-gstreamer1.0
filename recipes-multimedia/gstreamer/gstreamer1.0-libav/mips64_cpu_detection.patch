@@ -1,3 +1,8 @@
+From 3b7fb28b8e8bbabc93757add859a60ead7d8ff32 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 20 Dec 2016 00:47:01 -0800
+Subject: [PATCH] gstreamer1.0-libav: Fix build on mips64
+
 It will add -mips64r6 and -mips64r2 to cmdline which will
 cause conflicts
 
@@ -13,11 +18,15 @@ failed to merge target specific data of file
 -Khem
 Upstream-Status: Inappropriate [OE-Specific]
 
-Index: gst-libav-1.10.1/gst-libs/ext/libav/configure
-===================================================================
---- gst-libav-1.10.1.orig/gst-libs/ext/libav/configure
-+++ gst-libav-1.10.1/gst-libs/ext/libav/configure
-@@ -5269,12 +5269,9 @@ elif enabled mips; then
+---
+ gst-libs/ext/libav/configure | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/gst-libs/ext/libav/configure b/gst-libs/ext/libav/configure
+index 74059fb..e47be62 100755
+--- a/gst-libs/ext/libav/configure
++++ b/gst-libs/ext/libav/configure
+@@ -5650,12 +5650,9 @@ elif enabled mips; then
  
      # Enable minimum ISA based on selected options
      if enabled mips64; then

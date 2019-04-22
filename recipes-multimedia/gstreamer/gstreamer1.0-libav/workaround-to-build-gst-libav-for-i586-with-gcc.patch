@@ -1,17 +1,23 @@
+From 4474198ccc1dfda8851547145e557b9dc5a6ada2 Mon Sep 17 00:00:00 2001
+From: Bernhard Uebelacker <bernhardu@vr-web.de>
+Date: Tue, 9 Jun 2015 00:05:02 -0700
+Subject: [PATCH] gstreamer1.0-libav: fix build for i586 with gcc
+
 Description: Workaround to build libav for i586 with gcc 4.9.2 by avoiding memset
-Author: Bernhard Uebelacker <bernhardu@vr-web.de>
 
 ---
-Bug-Debian: https://bugs.debian.org/783082
-Last-Update: 2015-04-28
+ gst-libs/ext/libav/libavcodec/h264_cabac.c    |   6 +-
+ .../ref/fate/h264-conformance-canl1_toshiba_g | 305 ++++++++++++++++++
+ .../ref/fate/h264-conformance-cvmaqp2_sony_g  |  22 ++
+ 3 files changed, 332 insertions(+), 1 deletion(-)
+ create mode 100644 gst-libs/ext/libav/tests/ref/fate/h264-conformance-canl1_toshiba_g
+ create mode 100644 gst-libs/ext/libav/tests/ref/fate/h264-conformance-cvmaqp2_sony_g
 
-Upstream-Status: Backport [debian]
-
-Signed-off-by: Robert Yang <liezhi.yang@windriver.com>
-
---- gst-libav-1.4.5.orig/gst-libs/ext/libav/libavcodec/h264_cabac.c
-+++ gst-libav-1.4.5/gst-libs/ext/libav/libavcodec/h264_cabac.c
-@@ -2020,7 +2020,11 @@ decode_intra_mb:
+diff --git a/gst-libs/ext/libav/libavcodec/h264_cabac.c b/gst-libs/ext/libav/libavcodec/h264_cabac.c
+index 815149a..1b36586 100644
+--- a/gst-libs/ext/libav/libavcodec/h264_cabac.c
++++ b/gst-libs/ext/libav/libavcodec/h264_cabac.c
+@@ -2057,7 +2057,11 @@ decode_intra_mb:
          // In deblocking, the quantizer is 0
          h->cur_pic.qscale_table[mb_xy] = 0;
          // All coeffs are present

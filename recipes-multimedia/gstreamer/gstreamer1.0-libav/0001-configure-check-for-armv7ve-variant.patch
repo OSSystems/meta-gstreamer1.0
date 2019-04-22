@@ -1,4 +1,4 @@
-From aac5902d3c9cb35c771e760d0e487622aa2e116a Mon Sep 17 00:00:00 2001
+From ff34140a8dd1d164c3f09075a2d47f4fce947dbb Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Thu, 20 Apr 2017 10:38:18 -0700
 Subject: [PATCH] configure: check for armv7ve variant
@@ -14,22 +14,20 @@ armv7ve architecture
 Upstream-Status: Pending
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
 ---
  gst-libs/ext/libav/configure | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/gst-libs/ext/libav/configure b/gst-libs/ext/libav/configure
-index 4a5e477..727818e 100755
+index e47be62..ba7802d 100755
 --- a/gst-libs/ext/libav/configure
 +++ b/gst-libs/ext/libav/configure
-@@ -4295,6 +4295,7 @@ elif enabled arm; then
-         elif check_arm_arch 6Z;       then echo armv6z
+@@ -4745,6 +4745,7 @@ elif enabled arm; then
+         elif check_arm_arch 6KZ;      then echo armv6zk
          elif check_arm_arch 6ZK;      then echo armv6zk
          elif check_arm_arch 6T2;      then echo armv6t2
 +        elif check_arm_arch EXT_IDIV; then echo armv7ve
          elif check_arm_arch 7;        then echo armv7
          elif check_arm_arch 7A  7_A;  then echo armv7-a
          elif check_arm_arch 7S;       then echo armv7-a
--- 
-2.12.2
-

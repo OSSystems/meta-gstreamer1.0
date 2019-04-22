@@ -1,4 +1,4 @@
-From 54bba228ea52d01fd84941d97be23c03f9862b64 Mon Sep 17 00:00:00 2001
+From f3dcc7ae116bf803cbdb55434bc2584dbed547ab Mon Sep 17 00:00:00 2001
 From: Carlos Rafael Giani <dv@pseudoterminal.org>
 Date: Sat, 6 Apr 2013 01:22:22 +0200
 Subject: [PATCH] Disable yasm for libav when --disable-yasm
@@ -7,18 +7,19 @@ Upstream-Status: Inappropriate [configuration]
 
 Signed-off-by: Shane Wang <shane.wang@intel.com>
 Signed-off-by: Carlos Rafael Giani <dv@pseudoterminal.org>
+
 ---
- configure.ac | 4 ++++
- 1 file changed, 4 insertions(+)
+ configure.ac | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index 22ede88..ef3c050 100644
+index f695ccb..1fc5f41 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -305,6 +305,12 @@ else
+@@ -355,6 +355,12 @@ else
      emblibav_configure_args="$emblibav_configure_args --enable-gpl"
    fi
-
+ 
 +  AC_ARG_ENABLE(yasm,
 +              [AC_HELP_STRING([--disable-yasm], [disable use of yasm assembler])])
 +  if test "x$enable_yasm" = "xno"; then
@@ -28,6 +29,3 @@ index 22ede88..ef3c050 100644
    # if we are cross-compiling, tell libav so
    case $host in
        *android*)
--- 
-1.8.2
-

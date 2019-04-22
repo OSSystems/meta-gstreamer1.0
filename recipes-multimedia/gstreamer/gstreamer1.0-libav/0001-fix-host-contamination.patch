@@ -1,4 +1,4 @@
-From c1700f867f876ee33c130a8e28b688e2b1d89663 Mon Sep 17 00:00:00 2001
+From 91ed8dd0b32d87c0dd587207f43be33e6abd20c1 Mon Sep 17 00:00:00 2001
 From: Anuj Mittal <anuj.mittal@intel.com>
 Date: Wed, 11 Apr 2018 17:14:55 +0800
 Subject: [PATCH] Prevent host contamination
@@ -8,6 +8,7 @@ Remove reference to host $(libdir) from .la files.
 Upstream-Status: Inappropriate [cross-compile specific]
 
 Signed-off-by: Anuj Mittal <anuj.mittal@intel.com>
+
 ---
  gst-libs/ext/Makefile.am | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
