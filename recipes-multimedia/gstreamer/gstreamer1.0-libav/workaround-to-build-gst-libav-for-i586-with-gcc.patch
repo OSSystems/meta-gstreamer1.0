@@ -1,5 +1,5 @@
 Description: Workaround to build libav for i586 with gcc 4.9.2 by avoiding memset
-Author: Bernhard Uebelacker <bernhardu@vr-web.de>
+Author: Bernhard Übelacker <bernhardu@vr-web.de>
 
 ---
 Bug-Debian: https://bugs.debian.org/783082

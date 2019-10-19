@@ -10,7 +10,7 @@ is used as playbin audio-filter.
 Patch suggested by George Kiagiadakis <george.kiagiadakis@collabora.com>.
 
 Fixes #591
-Upstream status: merged, on track for 1.16.1.
+Upstream-Status: Backport [merged, on track for 1.16.1.]
 ---
  gst/audiofx/gstscaletempo.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
