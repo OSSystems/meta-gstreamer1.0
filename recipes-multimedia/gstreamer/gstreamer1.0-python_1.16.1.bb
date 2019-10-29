@@ -18,20 +18,13 @@ S = "${WORKDIR}/${PNREAL}-${PV}"
 
 # gobject-introspection is mandatory and cannot be configured
 REQUIRED_DISTRO_FEATURES = "gobject-introspection-data"
-UNKNOWN_CONFIGURE_WHITELIST_append = " --enable-introspection --disable-introspection"
+UNKNOWN_CONFIGURE_WHITELIST_append = " introspection"
 
-inherit autotools pkgconfig distutils3-base upstream-version-is-even gobject-introspection distro_features_check
+inherit meson pkgconfig distutils3-base upstream-version-is-even gobject-introspection distro_features_check
 
-EXTRA_OECONF += "--with-libpython-dir=${libdir}"
+EXTRA_OEMESON += "-Dlibpython-dir=${libdir}"
 
-do_install_append() {
-
-    # Note that this particular find line is taken from the Debian packaging for
-    # gst-python1.0.
-    find "${D}" \
-        -name '*.pyc' -o \
-        -name '*.pyo' -o \
-        -name '*.la' -o \
-        -name 'libgstpythonplugin*' \
-        -delete
-}
+# TODO: Upon scanning the plugins, an error will occur, because gst-python
+# attempts to load /usr/lib/libpython3.7m.so, but only /usr/lib/libpython3.7m.so.1.0
+# is available. Unclear how to fix this cleanly. Perhaps the next best approach
+# would be to modify the python recipe to add libpython3.7m.so to the main package.
