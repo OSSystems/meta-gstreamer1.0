@@ -14,7 +14,7 @@ PV = "1.16.0"
 
 S = "${WORKDIR}/git"
 
-inherit meson pkgconfig distro_features_check
+inherit meson pkgconfig features_check
 
 
 ANY_OF_DISTRO_FEATURES = "${GTK3DISTROFEATURES}"
