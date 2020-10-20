@@ -8,7 +8,11 @@ SRC_URI = "http://gstreamer.freedesktop.org/src/orc/orc-${PV}.tar.xz"
 SRC_URI[md5sum] = "4fd61be43bb222fac1ecc486f4d055db"
 SRC_URI[sha256sum] = "a66e3d8f2b7e65178d786a01ef61f2a0a0b4d0b8370de7ce134ba73da4af18f0"
 
-inherit autotools pkgconfig gtk-doc
+inherit meson pkgconfig gtk-doc
+
+GTKDOC_MESON_OPTION = "gtk_doc"
+GTKDOC_MESON_ENABLE_FLAG = "enabled"
+GTKDOC_MESON_DISABLE_FLAG = "disabled"
 
 BBCLASSEXTEND = "native nativesdk"
 
