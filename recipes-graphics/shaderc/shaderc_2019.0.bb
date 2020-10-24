@@ -18,7 +18,7 @@ inherit cmake python3native
 
 DEPENDS = "spirv-tools glslang"
 
-EXTRA_OECMAKE = "-DCMAKE_BUILD_TYPE=Releas -DSHADERC_SKIP_TESTS=ON"
+EXTRA_OECMAKE = "-DCMAKE_BUILD_TYPE=Release -DSHADERC_SKIP_TESTS=ON"
 
 do_configure_prepend() {
     # TODO: probably there is better solution for this.
