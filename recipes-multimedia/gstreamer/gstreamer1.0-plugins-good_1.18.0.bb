@@ -1,13 +1,13 @@
 require gstreamer1.0-plugins-common.inc
 
-SRC_URI = "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-${PV}.tar.xz \
+SRCREV = "6ef694ce7b40dda9f2163ed5e1b1de7378505ad0"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git;protocol=https \
            file://0001-qt-include-ext-qt-gstqtgl.h-instead-of-gst-gl-gstglf.patch \
            "
 
-SRC_URI[md5sum] = "c437bf42bf830bc0f482c7d088fb37a5"
-SRC_URI[sha256sum] = "6329bc377a3afea5cf1ab329a91cc4a906f075781780d1edc59e8bea8c1a8bac"
+UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 
-S = "${WORKDIR}/gst-plugins-good-${PV}"
+S = "${WORKDIR}/git"
 
 LICENSE = "GPLv2+ & LGPLv2.1+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343 \
