@@ -3,16 +3,17 @@ require gstreamer1.0-plugins-common.inc
 LICENSE = "GPLv2+ & LGPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d"
 
-SRC_URI = "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-${PV}.tar.xz \
+SRCREV = "f21623c1f60949ed6a77e2c2c3857be942cd2db5"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git;protocol=https \
            file://0001-ENGR00312515-get-caps-from-src-pad-when-query-caps.patch \
            file://0003-viv-fb-Make-sure-config.h-is-included.patch \
            file://0002-ssaparse-enhance-SSA-text-lines-parsing.patch \
            file://0004-glimagesink-Downrank-to-marginal.patch \
            "
-SRC_URI[md5sum] = "5ea9dc2692335e03170c3639901c2d83"
-SRC_URI[sha256sum] = "762abdd1a950809a1cea62fff7f86b5f7d6bd5f6841e3e585c700b823cdb7897"
 
-S = "${WORKDIR}/gst-plugins-base-${PV}"
+UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
+
+S = "${WORKDIR}/git"
 
 DEPENDS += "iso-codes util-linux zlib"
 

@@ -6,16 +6,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d"
 
 DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base"
 
-PNREAL = "gst-rtsp-server"
+SRCREV = "12eef972482ab3243743ae1bda1c40fc4411782c"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-rtsp-server.git;protocol=https"
 
-SRC_URI = "https://gstreamer.freedesktop.org/src/${PNREAL}/${PNREAL}-${PV}.tar.xz"
+UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 
-SRC_URI[md5sum] = "77fe28c702a83566811ab5c7bbe99ab2"
-SRC_URI[sha256sum] = "2ad19311054cbf2df0d0622936bc703dedc06ced706df46a3d3a3ea5a4b7c70f"
+S = "${WORKDIR}/git"
 
-S = "${WORKDIR}/${PNREAL}-${PV}"
-
-inherit meson pkgconfig upstream-version-is-even gobject-introspection
+inherit meson pkgconfig gobject-introspection
 
 EXTRA_OEMESON += " \
     -Ddoc=disabled \

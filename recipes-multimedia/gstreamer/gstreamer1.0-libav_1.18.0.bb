@@ -7,15 +7,16 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d \
                     file://ext/libav/gstav.h;beginline=1;endline=18;md5=a752c35267d8276fd9ca3db6994fca9c \
                     "
 
-SRC_URI = "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-${PV}.tar.xz"
-SRC_URI[md5sum] = "fe2f07356fa37445837cdde274027117"
-SRC_URI[sha256sum] = "42f93f5ce9a3fc22051e5f783a4574b56ebf213f331f75dcbc3552459bd3a06a"
+SRCREV = "215b3ed959f2b307065319f94855cc9e1ce7be95"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-libav.git;protocol=https"
 
-S = "${WORKDIR}/gst-libav-${PV}"
+S = "${WORKDIR}/git"
+
+UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 
 DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base ffmpeg"
 
-inherit meson pkgconfig upstream-version-is-even
+inherit meson pkgconfig
 
 FILES_${PN} += "${libdir}/gstreamer-1.0/*.so"
 FILES_${PN}-staticdev += "${libdir}/gstreamer-1.0/*.a"
