@@ -15,8 +15,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d \
 
 S = "${WORKDIR}/git"
 
-SRCREV = "96148da56f9cbf23120e51ce59ab90f94d8b19b8"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gstreamer.git;protocol=https \
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gstreamer.git;protocol=https;nobranch=1;tag=${PV} \
            file://0001-gst-gstpluginloader.c-when-env-var-is-set-do-not-fal.patch \
            file://0002-Remove-unused-valgrind-detection.patch \
            file://0003-meson-Add-option-for-installed-tests.patch \

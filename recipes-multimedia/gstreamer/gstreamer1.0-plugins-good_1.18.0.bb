@@ -1,7 +1,6 @@
 require gstreamer1.0-plugins-common.inc
 
-SRCREV = "6ef694ce7b40dda9f2163ed5e1b1de7378505ad0"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git;protocol=https \
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git;protocol=https;nobranch=1;tag=${PV} \
            file://0001-qt-include-ext-qt-gstqtgl.h-instead-of-gst-gl-gstglf.patch \
            "
 
