@@ -8,8 +8,7 @@ LIC_FILES_CHKSUM = "file://validate/COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343
 
 S = "${WORKDIR}/git"
 
-SRCREV = "796b7caad02fc69a060865d23e8e8d53500991e4"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-devtools.git;protocol=https \
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-devtools.git;protocol=https;nobranch=1;tag=${PV} \
            file://0001-connect-has-a-different-signature-on-musl.patch \
            "
 

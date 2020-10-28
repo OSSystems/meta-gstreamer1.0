@@ -6,8 +6,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d"
 
 DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base"
 
-SRCREV = "12eef972482ab3243743ae1bda1c40fc4411782c"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-rtsp-server.git;protocol=https"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-rtsp-server.git;protocol=https;nobranch=1;tag=${PV}"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 

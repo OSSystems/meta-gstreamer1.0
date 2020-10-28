@@ -3,8 +3,7 @@ require gstreamer1.0-plugins-common.inc
 LICENSE = "GPLv2+ & LGPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6762ed442b3822387a51c92d928ead0d"
 
-SRCREV = "f21623c1f60949ed6a77e2c2c3857be942cd2db5"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git;protocol=https \
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git;protocol=https;nobranch=1;tag=${PV} \
            file://0001-ENGR00312515-get-caps-from-src-pad-when-query-caps.patch \
            file://0003-viv-fb-Make-sure-config.h-is-included.patch \
            file://0002-ssaparse-enhance-SSA-text-lines-parsing.patch \

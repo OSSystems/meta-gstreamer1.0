@@ -6,8 +6,7 @@ based plugins for GStreamer and helper libraries: `vaapidecode', \
 LICENSE = "LGPLv2.1+"
 LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=4fbd65380cdd255951079008b364516c"
 
-SRCREV = "de6fb60929252d6ee066aa06e25302a3f4a9856e"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gstreamer-vaapi.git;protocol=https"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gstreamer-vaapi.git;protocol=https;nobranch=1;tag=${PV}"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 
