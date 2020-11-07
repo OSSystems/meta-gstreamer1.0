@@ -6,12 +6,13 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343 \
 LICENSE = "GPLv2+ & LGPLv2.1+ & LGPLv2+"
 LICENSE_FLAGS = "commercial"
 
-SRCREV = "ae91a81d9aa913cee1e8310af93a8fff5445628d"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git;protocol=https"
+SRC_URI = " \
+            https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-${PV}.tar.xz \
+            "
+SRC_URI[md5sum] = "01d3a24152cfd5eb27b1787d44b524c6"
+SRC_URI[sha256sum] = "686644e45e08258ae240c4519376668ad8d34ea6d0f6ab556473c317bfb7e082"
 
-UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
-
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/gst-plugins-ugly-${PV}"
 
 DEPENDS += "gstreamer1.0-plugins-base"
 
