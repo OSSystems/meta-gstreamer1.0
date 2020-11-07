@@ -8,7 +8,7 @@ SECTION = "multimedia"
 
 DEPENDS = "gstreamer1.0 glib-2.0-native"
 
-inherit gettext meson pkgconfig
+inherit gettext meson pkgconfig upstream-version-is-even
 
 require gstreamer1.0-plugins-packaging.inc
 

@@ -6,21 +6,21 @@ SECTION = "multimedia"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://validate/COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343"
 
-S = "${WORKDIR}/git"
+#S = "${WORKDIR}/gst-devtools-${PV}"
 
-SRCREV = "796b7caad02fc69a060865d23e8e8d53500991e4"
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-devtools.git;protocol=https \
+SRC_URI = "https://gstreamer.freedesktop.org/src/gst-devtools/gst-devtools-${PV}.tar.xz \
            file://0001-connect-has-a-different-signature-on-musl.patch \
            "
 
-UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
+SRC_URI[md5sum] = "37ca48ea06fb4304cfc9009ec924bc52"
+SRC_URI[sha256sum] = "82337141b5654f11c440f783892ba9d9498b3b6b98c2286b000f96dce6945f16"
 
 DEPENDS = "json-glib glib-2.0 glib-2.0-native gstreamer1.0 gstreamer1.0-plugins-base"
 RRECOMMENDS_${PN} = "git"
 
 FILES_${PN} += "${datadir}/gstreamer-1.0/* ${libdir}/gst-validate-launcher/* ${libdir}/gstreamer-1.0/*"
 
-inherit meson pkgconfig gettext gobject-introspection
+inherit meson pkgconfig gettext upstream-version-is-even gobject-introspection
 
 # TODO: put this in a gettext.bbclass patch
 def gettext_oemeson(d):
