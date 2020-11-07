@@ -5,7 +5,8 @@ SECTION = "multimedia"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=c34deae4e395ca07e725ab0076a5f740"
 
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-python.git;protocol=https;nobranch=1;tag=${PV}"
+SRCREV = "a85f99e274fe14348645c61606463ff63ceb45eb"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-python.git;protocol=https"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 

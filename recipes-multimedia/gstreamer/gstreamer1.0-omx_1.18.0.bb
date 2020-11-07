@@ -7,7 +7,8 @@ LICENSE_FLAGS = "commercial"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4fbd65380cdd255951079008b364516c \
                     file://omx/gstomx.h;beginline=1;endline=21;md5=5c8e1fca32704488e76d2ba9ddfa935f"
 
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-omx.git;protocol=https;nobranch=1;tag=${PV}"
+SRCREV = "f5efdba36c64ac2bf826cee34642e7fd54104ab1"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-omx.git;protocol=https"
 
 UPSTREAM_CHECK_GITTAGREGEX = "(?P<pver>\d+\.(\d*[02468])+(\.\d+)+)"
 

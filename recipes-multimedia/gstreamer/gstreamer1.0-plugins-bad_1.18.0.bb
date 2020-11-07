@@ -1,6 +1,7 @@
 require gstreamer1.0-plugins-common.inc
 
-SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git;protocol=https;nobranch=1;tag=${PV} \
+SRCREV = "7cb583bb0427819a6b59b783e7df67961df2155f"
+SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git;protocol=https \
            file://0001-fix-maybe-uninitialized-warnings-when-compiling-with.patch \
            file://0002-avoid-including-sys-poll.h-directly.patch \
            file://0003-ensure-valid-sentinals-for-gst_structure_get-etc.patch \
