@@ -35,7 +35,7 @@ X11DEPENDS = "virtual/libx11 libsm libxrender libxfixes libxdamage"
 X11ENABLEOPTS = "-Dximagesrc=enabled -Dximagesrc-xshm=enabled -Dximagesrc-xfixes=enabled -Dximagesrc-xdamage=enabled"
 X11DISABLEOPTS = "-Dximagesrc=disabled -Dximagesrc-xshm=disabled -Dximagesrc-xfixes=disabled -Dximagesrc-xdamage=disabled"
 
-QT5WAYLANDDEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+QT56WAYLANDDEPENDS = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 
 PACKAGECONFIG[asm]        = "-Dasm=enabled,-Dasm=disabled,nasm-native"
 PACKAGECONFIG[bz2]        = "-Dbz2=enabled,-Dbz2=disabled,bzip2"
@@ -52,7 +52,11 @@ PACKAGECONFIG[libpng]     = "-Dpng=enabled,-Dpng=disabled,libpng"
 PACKAGECONFIG[libv4l2]    = "-Dv4l2-libv4l2=enabled,-Dv4l2-libv4l2=disabled,v4l-utils"
 PACKAGECONFIG[mpg123]     = "-Dmpg123=enabled,-Dmpg123=disabled,mpg123"
 PACKAGECONFIG[pulseaudio] = "-Dpulse=enabled,-Dpulse=disabled,pulseaudio"
-PACKAGECONFIG[qt5]        = "-Dqt5=enabled,-Dqt5=disabled,qtbase qtdeclarative qtbase-native ${QT5WAYLANDDEPENDS}"
+# meta-qt5 and meta-qt6 both add recipes of the same name. Qt5 and Qt6 therefore
+# cannot coexist on the same rootfs. To reflect this here, specify that the
+# qt5 and qt6 packageconfigs collide with each other.
+PACKAGECONFIG[qt5]        = "-Dqt5=enabled,-Dqt5=disabled,qtbase qtdeclarative qtbase-native ${QT56WAYLANDDEPENDS},,,qt6"
+PACKAGECONFIG[qt6]        = "-Dqt6=enabled,-Dqt6=disabled,qtbase qtdeclarative qtbase-native qttools-native ${QT56WAYLANDDEPENDS},,,qt5"
 PACKAGECONFIG[soup2]      = "-Dsoup=enabled,,libsoup-2.4,,,soup3"
 PACKAGECONFIG[soup3]      = "-Dsoup=enabled,,libsoup,,,soup2"
 PACKAGECONFIG[speex]      = "-Dspeex=enabled,-Dspeex=disabled,speex"
@@ -79,3 +83,21 @@ EXTRA_OEMESON += " \
 "
 
 FILES:${PN}-equalizer += "${datadir}/gstreamer-1.0/presets/*.prs"
+
+do_configure[prefuncs] += "add_native_libexec_dir_to_path"
+python add_native_libexec_dir_to_path() {
+    packageconfig = (d.getVar("PACKAGECONFIG") or "").split()
+    # The Meson Qt module looks for the moc, uic, rcc tools by using pkg-config variables.
+    # However, these are not correctly prepended by a cross compilation sysroot. This makes
+    # that module look for moc in /usr/bin/ for example, even in OE.
+    # With Qt5, this is ultimately not a problem, since moc resides in STAGING_BINDIR_NATIVE,
+    # and that path is also part of the PATH environment variable, and if the module can't
+    # find moc etc. in the paths it gets from pkg-config, it tries to find the binary through
+    # that PATH variable. In Qt6 though these tools are no longer in STAGING_BINDIR_NATIVE,
+    # but in STAGING_LIBEXECDIR_NATIVE, which is _not_ part of the PATH environment variable
+    # by default. To make sure Meson can find moc and friends, add STAGING_LIBEXECDIR_NATIVE
+    # to PATH if the qt6 packageconfig is enabled.
+    if "qt6" in packageconfig:
+        # TODO: Use setVar('PATH:append'), or appendVar('PATH') ?
+        d.setVar('PATH:append', ':' + d.getVar('STAGING_LIBEXECDIR_NATIVE'))
+}
